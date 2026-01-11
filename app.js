@@ -76,7 +76,7 @@ const data = {
             angle: 7.5,
             speed: 0.001,
             milestones: [{ title: "Recognition", desc: "Industry awards" }],
-            skills: [{ name: "Kubernetes" }, { name: "CI/CD" }, { name: "Microservices" }]
+            skills: [{ name: "CI/CD" }, { name: "Microservices" }]
         },
         {
             name: "Uranus",
