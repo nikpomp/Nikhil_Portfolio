@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milky Way Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Landing Page -->
+    <div id="landing" class="screen active">
+        <div class="stars"></div>
+        <div class="content">
+            <h1 class="title">Welcome to My Universe</h1>
+
+            <div class="about-section">
+                <h3>About This Universe</h3>
+                <p>This 3D portfolio visualizes my professional life as a solar system. Each planet represents a
+                    different skill set or milestone, orbiting around my core nucleus. Travel through the galaxy to see
+                    where I'm headed, and dive into the solar system to see where I've been.</p>
+            </div>
+
+            <button id="enterBtn" class="enter-btn">My World - Portfolio</button>
+        </div>
+    </div>
+
+    <!-- Milky Way View -->
+    <div id="milkyway" class="screen">
+        <canvas id="galaxyCanvas"></canvas>
+        <div class="overlay">
+            <h2>The Future Horizon</h2>
+            <p>These distant solar systems represent my goals and future aspirations</p>
+            <div id="goalsContainer"></div>
+            <button id="enterSolarBtn" class="enter-btn" style="display:none;">Explore My Journey</button>
+        </div>
+        <button id="backToLandingBtn" class="back-btn">Back to Universe</button>
+    </div>
+
+    <!-- Solar System View (Removed as requested) -->
+
+
+    <!-- Detailed Solar System -->
+    <div id="detailed" class="screen">
+        <canvas id="detailedCanvas"></canvas>
+        <div id="detailed-header">
+            <h1>My Skills & Achievements</h1>
+            <p>Click on planets to explore my journey.</p>
+        </div>
+        <button id="menuBtn">View All Content</button>
+        <div id="contentSidebar">
+            <button id="closeSidebar">×</button>
+            <div id="sidebarContent"></div>
+        </div>
+        <div class="planet-info" id="planetInfo">
+            <div class="info-content">
+                <span class="close-btn" id="closeInfo">&times;</span>
+                <h3 id="planetName"></h3>
+                <div id="milestones"></div>
+                <div id="skills"></div>
+            </div>
+        </div>
+        <button id="backBtn" class="back-btn">Back</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
