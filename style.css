@@ -342,6 +342,7 @@ canvas {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 5px;
 }
+
 /* About Section on Landing Page */
 .about-section {
     max-width: 600px;
@@ -351,8 +352,8 @@ canvas {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     backdrop-filter: blur(5px);
-    opacity: 0;
-    animation: fadeIn 2s ease-out 1s forwards;
+    opacity: 1;
+    animation: fadeIn 2s ease-out 0.5s forwards;
 }
 
 .about-section h3 {
@@ -369,6 +370,112 @@ canvas {
     color: rgba(255, 255, 255, 0.9);
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
+/* Resume UI Styles */
+.resume-btn-style {
+    margin-top: 10px;
+    /* Spacing */
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #4fd0e7;
+    box-shadow: 0 0 10px rgba(79, 208, 231, 0.2);
+    padding: 8px 25px;
+    /* Smaller padding */
+    font-size: 0.9rem;
+    /* Smaller font */
+    color: #4fd0e7;
+    border-radius: 50px;
+}
+
+.resume-btn-style:hover {
+    background: rgba(79, 208, 231, 0.1);
+    box-shadow: 0 0 15px rgba(79, 208, 231, 0.4);
+    color: #fff;
+    border-color: #fff;
+}
+
+.resume-btn-detailed {
+    position: fixed;
+    top: 80px;
+    /* Below Menu Btn */
+    right: 30px;
+    bottom: auto;
+    /* Ensure no bottom conflict */
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    z-index: 101;
+    transition: all 0.3s;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.resume-btn-detailed:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
+.resume-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 10, 15, 0.95);
+    /* Dark background */
+}
+
+.resume-img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    object-fit: contain;
+}
+
+.resume-controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.resume-back-btn,
+.download-btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.resume-back-btn {
+    background: #ff6b6b;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.resume-back-btn:hover {
+    background: #ff4757;
+    transform: scale(1.05);
+}
+
+.download-btn {
+    background: #4ecdc4;
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+.download-btn:hover {
+    background: #45b7aa;
+    transform: scale(1.05);
 }

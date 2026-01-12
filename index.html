@@ -22,7 +22,12 @@
                     where I'm headed, and dive into the solar system to see where I've been.</p>
             </div>
 
-            <button id="enterBtn" class="enter-btn">My World - Portfolio</button>
+            <div class="landing-buttons">
+                <button id="enterBtn" class="enter-btn">My Universe</button>
+                <div style="margin-top: 15px;"></div>
+                <button id="resumeBtnLanding" class="enter-btn resume-btn-style"
+                    onclick="navigateToResume('landing')">View Resume</button>
+            </div>
         </div>
     </div>
 
@@ -62,6 +67,19 @@
             </div>
         </div>
         <button id="backBtn" class="back-btn">Back</button>
+        <button id="resumeBtnDetailed" class="resume-btn-detailed"
+            onclick="event.stopPropagation(); navigateToResume('detailed')">View Resume</button>
+    </div>
+
+    <!-- Resume View -->
+    <div id="resume" class="screen">
+        <div class="resume-container">
+            <img src="resume.jpg" alt="My Resume" class="resume-img">
+            <div class="resume-controls">
+                <button id="backFromResumeBtn" class="resume-back-btn" onclick="closeResume()">Close</button>
+                <a href="resume.jpg" download="Nikhil_Yadav_Resume.jpg" class="download-btn">Download</a>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

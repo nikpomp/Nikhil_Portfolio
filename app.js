@@ -125,6 +125,24 @@ window.addEventListener('DOMContentLoaded', () => {
     initLandingStars();
 });
 
+// Global Navigation Functions
+window.navigateToResume = function (fromScreen) {
+    console.log("Navigating to Resume from:", fromScreen);
+    window.lastScreen = fromScreen || currentScreen;
+    showScreen('resume');
+}
+
+window.closeResume = function () {
+    console.log("Closing Resume, returning to:", window.lastScreen);
+    if (window.lastScreen) {
+        showScreen(window.lastScreen);
+        if (window.lastScreen === 'milkyway') animateGalaxy();
+        if (window.lastScreen === 'detailed') animateDetailedSolarSystem();
+    } else {
+        showScreen('landing');
+    }
+}
+
 // Event Listeners
 function initEventListeners() {
     // Landing Entrances
