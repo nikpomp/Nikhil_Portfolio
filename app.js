@@ -23,7 +23,8 @@ const data = {
             angle: 0,
             speed: 0.005,
             milestones: [{ title: "First Steps", desc: "Started my journey" }],
-            skills: [{ name: "HTML/CSS" }]
+            skills: [{ name: "HTML/CSS" }],
+            moons: [{ name: "Curiosity" }, { name: "Adaptability" }]
         },
         {
             name: "Venus",
@@ -33,7 +34,8 @@ const data = {
             angle: 1.5,
             speed: 0.004,
             milestones: [{ title: "Education", desc: "Completed degree" }],
-            skills: [{ name: "JavaScript" }, { name: "React" }]
+            skills: [{ name: "JavaScript" }, { name: "React" }],
+            moons: [{ name: "Communication" }, { name: "Critical Thinking" }]
         },
         {
             name: "Earth",
@@ -46,7 +48,8 @@ const data = {
                 { title: "Current Role", desc: "Software Developer" },
                 { title: "Projects", desc: "Built multiple apps" }
             ],
-            skills: [{ name: "Node.js" }, { name: "Python" }, { name: "Git" }]
+            skills: [{ name: "Node.js" }, { name: "Python" }, { name: "Git" }],
+            moons: [{ name: "Problem Solving" }, { name: "Teamwork" }, { name: "Time Management" }]
         },
         {
             name: "Mars",
@@ -56,7 +59,8 @@ const data = {
             angle: 4.5,
             speed: 0.002,
             milestones: [{ title: "Next Goal", desc: "Lead major project" }],
-            skills: [{ name: "Docker" }, { name: "AWS" }]
+            skills: [{ name: "Docker" }, { name: "AWS" }],
+            moons: [{ name: "Strategic Planning" }, { name: "Ambition" }]
         },
         {
             name: "Jupiter",
@@ -66,7 +70,8 @@ const data = {
             angle: 6,
             speed: 0.0015,
             milestones: [{ title: "Big Achievement", desc: "Scaled to millions" }],
-            skills: [{ name: "TypeScript" }, { name: "GraphQL" }, { name: "MongoDB" }, { name: "Redis" }]
+            skills: [{ name: "TypeScript" }, { name: "GraphQL" }, { name: "MongoDB" }, { name: "Redis" }],
+            moons: [{ name: "Leadership" }, { name: "Mentorship" }, { name: "Scalability Thinking" }]
         },
         {
             name: "Saturn",
@@ -76,7 +81,8 @@ const data = {
             angle: 7.5,
             speed: 0.001,
             milestones: [{ title: "Recognition", desc: "Industry awards" }],
-            skills: [{ name: "CI/CD" }, { name: "Microservices" }]
+            skills: [{ name: "CI/CD" }, { name: "Microservices" }],
+            moons: [{ name: "Consistency" }, { name: "Attention to Detail" }]
         },
         {
             name: "Uranus",
@@ -86,7 +92,8 @@ const data = {
             angle: 9,
             speed: 0.0008,
             milestones: [{ title: "Innovation", desc: "Introduced new tech" }],
-            skills: [{ name: "Machine Learning" }, { name: "Data Science" }]
+            skills: [{ name: "Machine Learning" }, { name: "Data Science" }],
+            moons: [{ name: "Creativity" }, { name: "Agility" }]
         },
         {
             name: "Neptune",
@@ -96,7 +103,8 @@ const data = {
             angle: 10.5,
             speed: 0.0005,
             milestones: [{ title: "Future Vision", desc: "Next big thing" }],
-            skills: [{ name: "Blockchain" }, { name: "Web3" }]
+            skills: [{ name: "Blockchain" }, { name: "Web3" }],
+            moons: [{ name: "Visionary" }, { name: "Patience" }]
         }
     ]
 };
@@ -916,24 +924,38 @@ function initDetailedSolarSystem() {
         return initDetailedSolarSystem();
     }
 
+    // Clear old meteors
+    meteors.forEach(m => {
+        if (m.geometry) m.geometry.dispose();
+        if (m.material) m.material.dispose();
+    });
+    meteors = [];
+
     detailedScene = new THREE.Scene();
 
     // Camera
     detailedCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 10000);
     detailedCamera.position.set(0, 900, 1200);
-    detailedCamera.lookAt(0, 0, 0);
+    detailedCamera.lookAt(0, -150, 0);
 
     detailedRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('detailedCanvas'), antialias: true, alpha: true });
     detailedRenderer.setSize(window.innerWidth, window.innerHeight);
     detailedRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Reduced ambient for more contrast
     detailedScene.add(ambientLight);
-    const sunLight = new THREE.PointLight(0xffd700, 2.5, 3000);
+
+    // Sun Light
+    const sunLight = new THREE.PointLight(0xffd700, 2.0, 3000);
     detailedScene.add(sunLight);
 
-    // Shooting Stars
+    // Directional Light for better 3D shadows/form on planets
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(0, 500, 500);
+    detailedScene.add(dirLight);
+
+    // Shooting Stars (Background)
     const starGeo = new THREE.BufferGeometry();
     const starCount = 6000;
     const starPos = new Float32Array(starCount * 3);
@@ -951,7 +973,7 @@ function initDetailedSolarSystem() {
     // Sun Texture
     const sunTexture = createSunTexture();
 
-    // 4. Sun Mesh
+    // Sun Mesh
     const sunGeo = new THREE.SphereGeometry(60, 64, 64);
     const sunMat = new THREE.MeshBasicMaterial({
         map: sunTexture,
@@ -968,20 +990,19 @@ function initDetailedSolarSystem() {
     glowMesh.userData = { isGlow: true };
     detailedScene.add(glowMesh);
 
-    // 5. Planets & Orbits Groups
+    // Planets & Orbits
     data.planets.forEach((planet, index) => {
         if (planet.name === 'Sun') return;
 
-        const distance = planet.distance * 2.0; // Reduced from 2.5
+        const distance = planet.distance * 2.0;
         const size = planet.size;
-        const ovalRatio = 0.8; // Make it oval
+        const ovalRatio = 0.8;
 
-        // Create a Group for the whole orbit system of this planet
-        // This allows us to rotate/wobble the entire plane (orbit + planet) together
+        // System Group
         const systemGroup = new THREE.Group();
         systemGroup.userData = {
             isSystemGroup: true,
-            baseTiltX: Math.random() * 0.2, // Initial random tilt
+            baseTiltX: Math.random() * 0.2,
             baseTiltZ: Math.random() * 0.2,
             wobbleSpeed: 0.0005 + Math.random() * 0.001
         };
@@ -993,18 +1014,24 @@ function initDetailedSolarSystem() {
             color: 0xffffff,
             side: THREE.DoubleSide,
             transparent: true,
-            opacity: 0.6
+            opacity: 0.4
         });
         const orbitMesh = new THREE.Mesh(orbitGeo, orbitMat);
-        orbitMesh.rotation.x = -Math.PI / 2; // Lie flat within the group
-        orbitMesh.scale.y = ovalRatio; // Make it oval (Y in local space is Z in world after rotation)
+        orbitMesh.rotation.x = -Math.PI / 2;
+        orbitMesh.scale.y = ovalRatio;
         systemGroup.add(orbitMesh);
 
-        // Planet
+        // Planet Mesh
         const planetGeo = new THREE.SphereGeometry(size, 64, 64);
+
+        // Procedural Texture
+        const pTexture = createPlanetTexture(planet);
+
         const planetMat = new THREE.MeshStandardMaterial({
-            color: planet.color,
-            roughness: 0.7,
+            map: pTexture,
+            color: 0xffffff, // Let texture color take over
+            roughness: 0.8,
+            metalness: 0.1
         });
         const planetMesh = new THREE.Mesh(planetGeo, planetMat);
 
@@ -1016,6 +1043,65 @@ function initDetailedSolarSystem() {
             speed: planet.speed * 0.5,
             planetData: planet
         };
+
+        // Atmosphere Glow (for Earth/Venus/Neptune)
+        if (['Earth', 'Venus', 'Neptune', 'Uranus'].includes(planet.name)) {
+            const atmoGeo = new THREE.SphereGeometry(size * 1.1, 32, 32);
+            const atmoMat = new THREE.MeshBasicMaterial({
+                color: planet.color,
+                transparent: true,
+                opacity: 0.2,
+                side: THREE.BackSide
+            });
+            const atmo = new THREE.Mesh(atmoGeo, atmoMat);
+            planetMesh.add(atmo);
+        }
+
+        // Saturn Rings
+        if (planet.name === 'Saturn') {
+            const ringGeo = new THREE.RingGeometry(size * 1.4, size * 2.2, 64);
+            const ringMat = new THREE.MeshBasicMaterial({
+                color: 0xcfb56b,
+                side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 0.7
+            });
+            const rings = new THREE.Mesh(ringGeo, ringMat);
+            rings.rotation.x = Math.PI / 2;
+            planetMesh.add(rings);
+        }
+
+        // Moons (Soft Skills)
+        if (planet.moons) {
+            planet.moons.forEach((moon, i) => {
+                const moonSize = size * 0.25;
+                const moonDist = size * 2.0 + (i * 12);
+
+                const moonGeo = new THREE.SphereGeometry(moonSize, 16, 16);
+                const moonMat = new THREE.MeshStandardMaterial({
+                    color: 0xcccccc,
+                    roughness: 0.8
+                });
+                const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+
+                // Starting position
+                const angle = (i / planet.moons.length) * Math.PI * 2;
+                moonMesh.position.set(
+                    Math.cos(angle) * moonDist,
+                    0,
+                    Math.sin(angle) * moonDist
+                );
+
+                moonMesh.userData = {
+                    isMoon: true,
+                    angle: angle,
+                    distance: moonDist,
+                    speed: 0.02 + (Math.random() * 0.02)
+                };
+
+                planetMesh.add(moonMesh);
+            });
+        }
 
         systemGroup.add(planetMesh);
     });
@@ -1032,11 +1118,11 @@ function initDetailedSolarSystem() {
         mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
         raycaster.setFromCamera(mouse, detailedCamera);
-        // Recursive true to hit planets inside groups
         const intersects = raycaster.intersectObjects(detailedScene.children, true);
 
         let hovered = false;
         for (let hit of intersects) {
+            // Check if it's a planet (SphereGeometry) and has data
             if (hit.object.geometry && hit.object.geometry.type === 'SphereGeometry' && hit.object.userData.planetData) {
                 hovered = true;
                 if (event.type === 'click') {
@@ -1051,21 +1137,101 @@ function initDetailedSolarSystem() {
     window.addEventListener('mousemove', onInteract);
     window.addEventListener('click', onInteract);
 
+    // Start Meteor Shower Interval
+    if (meteorInterval) clearInterval(meteorInterval);
+    meteorInterval = setInterval(spawnMeteorShower, 2000); // More frequent: every 2s
+
     animateDetailedSolarSystem();
 }
 
-// Procedural Sun Texture
-function createSunTexture() {
+// Procedural Planet Textures
+function createPlanetTexture(planet) {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
     const ctx = canvas.getContext('2d');
 
-    // Base
-    ctx.fillStyle = '#ffcc00';
+    // Fill base
+    ctx.fillStyle = planet.color;
     ctx.fillRect(0, 0, 512, 512);
 
-    // Noise/Spots
+    const name = planet.name;
+
+    // Noise/Crater Pattern (Rocky)
+    if (['Mercury', 'Venus', 'Mars'].includes(name)) {
+        for (let i = 0; i < 400; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 512;
+            const size = Math.random() * 20 + 5;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0,0,0, ${Math.random() * 0.1})`; // Dark spots
+            ctx.fill();
+        }
+        // Highlights
+        for (let i = 0; i < 200; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 512;
+            const size = Math.random() * 10;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,255,255, ${Math.random() * 0.1})`;
+            ctx.fill();
+        }
+    }
+    // Gas Giant Pattern (Bands)
+    else if (['Jupiter', 'Saturn', 'Uranus', 'Neptune'].includes(name)) {
+        // Horizontal bands with blur
+        const bands = 10;
+        const h = 512 / bands;
+        for (let i = 0; i < bands; i++) {
+            ctx.fillStyle = `rgba(255,255,255, ${Math.random() * 0.2})`;
+            ctx.fillRect(0, i * h, 512, h);
+        }
+        // Swirls
+        for (let i = 0; i < 50; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 512;
+            const w = Math.random() * 100 + 50;
+            const ht = Math.random() * 20 + 5;
+            ctx.fillStyle = `rgba(0,0,0, ${Math.random() * 0.05})`;
+            ctx.fillRect(x, y, w, ht);
+        }
+    }
+    // Earth-like
+    else if (name === 'Earth') {
+        // Continents (approximated by large green blobs)
+        ctx.fillStyle = '#2e8b57'; // Sea Green
+        for (let i = 0; i < 20; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 512;
+            const rad = Math.random() * 80 + 30;
+            ctx.beginPath();
+            ctx.arc(x, y, rad, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        // Clouds
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        for (let i = 0; i < 50; i++) {
+            const x = Math.random() * 512;
+            const y = Math.random() * 512;
+            const w = Math.random() * 100 + 20;
+            const ht = Math.random() * 30 + 10;
+            ctx.fillRect(x, y, w, ht);
+        }
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+    return texture;
+}
+
+function createSunTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffcc00';
+    ctx.fillRect(0, 0, 512, 512);
     for (let i = 0; i < 200; i++) {
         const x = Math.random() * 512;
         const y = Math.random() * 512;
@@ -1075,8 +1241,6 @@ function createSunTexture() {
         ctx.fillStyle = `rgba(255, ${Math.floor(Math.random() * 100 + 50)}, 0, ${Math.random() * 0.2 + 0.1})`;
         ctx.fill();
     }
-
-    // More detail
     for (let i = 0; i < 1000; i++) {
         const x = Math.random() * 512;
         const y = Math.random() * 512;
@@ -1085,9 +1249,52 @@ function createSunTexture() {
         ctx.fillStyle = `rgba(255, 200, 0, 0.3)`;
         ctx.fillRect(x, y, w, h);
     }
-
     const texture = new THREE.CanvasTexture(canvas);
     return texture;
+}
+
+// Meteor Shower Logic
+function spawnMeteorShower() {
+    if (currentScreen !== 'detailed') return;
+
+    // Spawn 5-8 meteors
+    const count = Math.floor(Math.random() * 4) + 5;
+
+    for (let i = 0; i < count; i++) {
+        // Streak: Tip 0, Tail 1.5, Long
+        const geo = new THREE.CylinderGeometry(0, 2, 80, 8);
+        geo.rotateX(-Math.PI / 2); // Point forward
+
+        const mat = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const mesh = new THREE.Mesh(geo, mat);
+
+        // Random Start (Top hemisphere)
+        const x = (Math.random() - 0.5) * 2000;
+        const y = 800 + Math.random() * 400;
+        const z = (Math.random() - 0.5) * 2000;
+
+        mesh.position.set(x, y, z);
+
+        // Target random point below
+        const targetX = x + (Math.random() - 0.5) * 500;
+        const targetY = -800;
+        const targetZ = z + (Math.random() - 0.5) * 500;
+
+        const target = new THREE.Vector3(targetX, targetY, targetZ);
+        mesh.lookAt(target);
+
+        const velocity = target.sub(mesh.position).normalize().multiplyScalar(25 + Math.random() * 10);
+
+        mesh.userData = { velocity: velocity };
+
+        detailedScene.add(mesh);
+        meteors.push(mesh);
+    }
 }
 
 function animateDetailedSolarSystem() {
@@ -1105,34 +1312,53 @@ function animateDetailedSolarSystem() {
         if (obj.userData.isStarSystem) {
             const positions = obj.geometry.attributes.position.array;
             for (let i = 2; i < positions.length; i += 3) {
-                positions[i] += 2; // Move speed Z
-                if (positions[i] > 2000) {
-                    positions[i] = -2000; // Reset to back
-                }
+                positions[i] += 2;
+                if (positions[i] > 2000) positions[i] = -2000;
             }
             obj.geometry.attributes.position.needsUpdate = true;
         }
     });
 
-    // 2. Animate Groups (Wobble) & Planets (Revolve)
+    // 2. Animate Meteors
+    for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.position.add(m.userData.velocity);
+
+        if (m.material.opacity > 0) m.material.opacity -= 0.01; // Fade faster
+
+        if (m.position.y < -1500 || m.material.opacity <= 0) {
+            detailedScene.remove(m);
+            meteors.splice(i, 1);
+        }
+    }
+
+    // 3. Animate Groups (Wobble) & Planets (Revolve)
     detailedScene.children.forEach(group => {
         if (group.userData.isSystemGroup) {
-            // Wobble the whole orbit plane randomly
             group.rotation.x = Math.sin(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltX;
             group.rotation.z = Math.cos(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltZ;
 
-            // Find planet inside group
             group.children.forEach(child => {
                 if (child.userData.planetData) {
-                    // Revolve planet around logic
                     child.userData.angle += child.userData.speed;
-                    // Oval Logic: X is normal radius, Z is scaled radius
                     const rX = child.userData.distance;
                     const rZ = child.userData.distance * child.userData.ovalRatio;
 
                     child.position.x = Math.cos(child.userData.angle) * rX;
                     child.position.z = Math.sin(child.userData.angle) * rZ;
-                    child.rotation.y += 0.01;
+
+                    // Rotate planet on its own axis
+                    child.rotation.y += 0.005;
+
+                    // Animate Moons attached to planet
+                    child.children.forEach(grandchild => {
+                        if (grandchild.userData.isMoon) {
+                            grandchild.userData.angle += grandchild.userData.speed;
+                            const mDist = grandchild.userData.distance;
+                            grandchild.position.x = Math.cos(grandchild.userData.angle) * mDist;
+                            grandchild.position.z = Math.sin(grandchild.userData.angle) * mDist;
+                        }
+                    });
                 }
             });
         }
@@ -1141,28 +1367,44 @@ function animateDetailedSolarSystem() {
     detailedRenderer.render(detailedScene, detailedCamera);
 }
 
-
 function showPlanetInfo(planet) {
     const info = document.getElementById('planetInfo');
     document.getElementById('planetName').textContent = planet.name;
+    document.getElementById('planetName').style.color = planet.color;
 
     const milestonesDiv = document.getElementById('milestones');
     milestonesDiv.innerHTML = '<h4>Milestones:</h4>';
-    planet.milestones.forEach(m => {
-        const item = document.createElement('div');
-        item.className = 'milestone-item';
-        item.innerHTML = `<strong>${m.title}</strong><p>${m.desc}</p>`;
-        milestonesDiv.appendChild(item);
-    });
+    if (planet.milestones) {
+        planet.milestones.forEach(m => {
+            const item = document.createElement('div');
+            item.className = 'milestone-item';
+            item.innerHTML = `<strong>${m.title}</strong><p>${m.desc}</p>`;
+            milestonesDiv.appendChild(item);
+        });
+    }
 
     const skillsDiv = document.getElementById('skills');
-    skillsDiv.innerHTML = '<h4>Skills (Moons):</h4>';
-    planet.skills.forEach(s => {
-        const item = document.createElement('div');
-        item.className = 'skill-item';
-        item.innerHTML = `<strong>${s.name}</strong>`;
-        skillsDiv.appendChild(item);
-    });
+    skillsDiv.innerHTML = '<h4>Hard Skills (Tech):</h4>';
+    if (planet.skills) {
+        planet.skills.forEach(s => {
+            const item = document.createElement('div');
+            item.className = 'skill-item';
+            item.innerHTML = `<strong>${s.name}</strong>`;
+            skillsDiv.appendChild(item);
+        });
+    }
+
+    // Moons as Soft Skills
+    if (planet.moons && planet.moons.length > 0) {
+        skillsDiv.innerHTML += '<h4 style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">Soft Skills (Moons):</h4>';
+        planet.moons.forEach(m => {
+            const item = document.createElement('div');
+            item.className = 'skill-item';
+            item.style.borderColor = '#ffffff';
+            item.innerHTML = `<strong>${m.name}</strong>`;
+            skillsDiv.appendChild(item);
+        });
+    }
 
     info.classList.add('active');
 }
