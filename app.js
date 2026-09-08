@@ -1,221 +1,624 @@
-// Portfolio Data
+// Portfolio Data for Nikhil Yadav
 const data = {
+    personal: {
+        name: "Nikhil Yadav",
+        title: "Software Engineer | Full-Stack Development, Data Systems & AI Applications",
+        university: "Shri Ramswaroop Memorial University, Lucknow, India",
+        degree: "B. Tech in Computer Science (Sep 2022 - July 2026)",
+        location: "Lucknow, Uttar Pradesh, India",
+        phone: "+91-7518987201",
+        email: "nikhil3nika@gmail.com",
+        github: "https://github.com/nikpomp",
+        githubUsername: "@nikpomp",
+        linkedin: "https://linkedin.com/in/unk17",
+        linkedinUsername: "in/unk17",
+        summary: "Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and modern ML frameworks. Strong problem-solving ability with experience translating real-world requirements into scalable technical solutions. Interested in Forward Deployed Engineering, Software Engineering, and AI Platform roles."
+    },
     goals: [
-        { name: "Tech Innovation", desc: "Creating groundbreaking solutions", color: "#ff6b6b" },
-        { name: "Leadership", desc: "Leading teams to success", color: "#4ecdc4" },
-        { name: "Entrepreneurship", desc: "Building successful startups", color: "#ffe66d" },
-        { name: "Global Impact", desc: "Making a difference worldwide", color: "#a8e6cf" },
-        { name: "Continuous Learning", desc: "Never stop growing", color: "#ff8b94" }
+        { name: "AI Platforms & Infrastructure", desc: "Building scalable AI verification chatbots and ML pipelines", color: "#00F2FE" },
+        { name: "Full-Stack Systems", desc: "Enterprise database schema design and responsive web apps", color: "#4FACFE" },
+        { name: "Forward Deployed Engineering", desc: "Translating complex customer needs into production code", color: "#ffe66d" },
+        { name: "Data Optimization", desc: "Query performance tuning and clean relational data modeling", color: "#a8e6cf" },
+        { name: "Leadership & Collaboration", desc: "Coordinating tech workshops, sports events, and hackathons", color: "#ff8b94" }
+    ],
+    skillsCategories: [
+        {
+            category: "Programming",
+            icon: "💻",
+            skills: ["Python", "JavaScript", "C++", "SQL"]
+        },
+        {
+            category: "Backend & APIs",
+            icon: "⚙️",
+            skills: ["REST APIs", "Database Design", "Data Modeling", "CRUD Workflows"]
+        },
+        {
+            category: "Databases",
+            icon: "🗄️",
+            skills: ["MySQL", "SQL Query Optimization", "Relational Schemas"]
+        },
+        {
+            category: "AI & Data",
+            icon: "🤖",
+            skills: ["Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch", "NLP", "TF-IDF", "Cosine Similarity"]
+        },
+        {
+            category: "Tools & Environment",
+            icon: "🛠️",
+            skills: ["Git", "GitHub", "VS Code", "Linux", "Web Server"]
+        }
+    ],
+    experience: [
+        {
+            role: "Software Development Intern",
+            company: "Hubble Mind",
+            duration: "Jun 2023 - Aug 2023",
+            location: "Remote / India",
+            highlights: [
+                "Designed and maintained structured MySQL databases for client project records, improving data organization and query reliability.",
+                "Collaborated with engineering teams to improve backend data workflows and reporting performance for internal tools."
+            ]
+        }
+    ],
+    projects: [
+        {
+            id: "erp",
+            title: "ERP System Development",
+            tagline: "Full-Stack Enterprise Application",
+            category: "Full-Stack / Database",
+            highlights: [
+                "Designed and developed a centralized ERP platform supporting inventory, employee management, and billing workflows.",
+                "Built relational MySQL schema supporting 50+ inventory and employee operations with business-critical CRUD flows.",
+                "Developed responsive interfaces using HTML, CSS, and JavaScript for cross-module usability."
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "MySQL", "CRUD APIs", "Database Design"]
+        },
+        {
+            id: "misinfo",
+            title: "AI-Based Misinformation Detection Platform",
+            tagline: "NLP / Machine Learning / Interactive Chatbot",
+            category: "AI / Machine Learning / NLP",
+            highlights: [
+                "Built an NLP-powered verification system to analyze text content and identify potentially misleading information.",
+                "Implemented preprocessing pipelines with tokenization, text cleaning, and TF-IDF vectorization.",
+                "Designed a real-time plugin workflow for automated verification and user feedback integration.",
+                "Built an interactive AI verification chatbot that accepts user-submitted text, returns credibility scores, and explains classification results in natural language."
+            ],
+            tech: ["Python", "NLP", "TF-IDF", "Scikit-learn", "Machine Learning", "Chatbot UI"]
+        },
+        {
+            id: "recommendation",
+            title: "Product Recommendation Engine",
+            tagline: "Content-Based ML Recommendation Service",
+            category: "Machine Learning / Data Science",
+            highlights: [
+                "Developed a recommendation service using content-based filtering and cosine similarity.",
+                "Processed product metadata with Pandas and Scikit-learn to generate personalized recommendations."
+            ],
+            tech: ["Python", "Pandas", "Scikit-learn", "Cosine Similarity", "Data Processing"]
+        }
+    ],
+    education: [
+        {
+            degree: "B. Tech in Computer Science",
+            institution: "Shri Ramswaroop Memorial University, Lucknow, India",
+            duration: "Sep 2022 - July 2026",
+            status: "Graduated / Final Year",
+            details: "Core focus on Software Engineering, AI & Database Systems."
+        },
+        {
+            degree: "Secondary & Higher Secondary Education (CBSE)",
+            institution: "Lucknow Public School, Lucknow, India",
+            duration: "Completed",
+            status: "Graduated",
+            details: "Focused on Physics, Chemistry, Mathematics, and Computer Science."
+        }
+    ],
+    coursework: [
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Operating Systems",
+        "Computer Networks",
+        "Machine Learning",
+        "Software Engineering"
+    ],
+    leadership: [
+        "Collaborated with cross-functional teams during internship projects to improve database workflows and reporting systems.",
+        "Participated in hackathons, technical workshops, and peer learning communities.",
+        "Coordinated college sports events involving planning, scheduling, and team management."
     ],
     planets: [
         {
-            name: "Sun",
+            name: "Sun (Profile)",
             color: "#ffd700",
             size: 80,
-            milestones: [{ title: "Core Values", desc: "Integrity, Innovation, Excellence" }],
-            skills: []
+            milestones: [
+                { title: "Nikhil Yadav", desc: "Software Engineer | Full-Stack, Data Systems & AI Applications" },
+                { title: "Location", desc: "Lucknow, Uttar Pradesh, India" },
+                { title: "Target Roles", desc: "Forward Deployed Engineering, Software Engineering, AI Platform Roles" }
+            ],
+            skills: [{ name: "Full-Stack" }, { name: "Data Systems" }, { name: "AI Platforms" }]
         },
         {
-            name: "Mercury",
+            name: "Mercury (Skills)",
             color: "#8c7853",
             size: 25,
             distance: 100,
             angle: 0,
             speed: 0.005,
-            milestones: [{ title: "First Steps", desc: "Started my journey" }],
-            skills: [{ name: "HTML/CSS" }],
-            moons: [{ name: "Curiosity" }, { name: "Adaptability" }]
+            milestones: [
+                { title: "Programming", desc: "Python, JavaScript, C++, SQL" },
+                { title: "Backend & DB", desc: "REST APIs, MySQL, Database Design, CRUD Workflows" },
+                { title: "AI & ML", desc: "Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, NLP" }
+            ],
+            skills: [{ name: "Python" }, { name: "JavaScript" }, { name: "SQL" }, { name: "MySQL" }, { name: "PyTorch" }],
+            moons: [{ name: "Git" }, { name: "VS Code" }]
         },
         {
-            name: "Venus",
+            name: "Venus (Education)",
             color: "#ffc649",
             size: 30,
             distance: 140,
             angle: 1.5,
             speed: 0.004,
-            milestones: [{ title: "Education", desc: "Completed degree" }],
-            skills: [{ name: "JavaScript" }, { name: "React" }],
-            moons: [{ name: "Communication" }, { name: "Critical Thinking" }]
+            milestones: [
+                { title: "B. Tech CS", desc: "Shri Ramswaroop Memorial University (2022 - 2026)" },
+                { title: "High School (CBSE)", desc: "Lucknow Public School, Lucknow" },
+                { title: "Coursework", desc: "DSA, DBMS, OS, Networks, ML, Software Engineering" }
+            ],
+            skills: [{ name: "DSA" }, { name: "DBMS" }, { name: "Operating Systems" }, { name: "Networks" }],
+            moons: [{ name: "Problem Solving" }, { name: "Computer Science" }]
         },
         {
-            name: "Earth",
+            name: "Earth (Internship)",
             color: "#4a90e2",
             size: 35,
             distance: 180,
             angle: 3,
             speed: 0.003,
             milestones: [
-                { title: "Current Role", desc: "Software Developer" },
-                { title: "Projects", desc: "Built multiple apps" }
+                { title: "Hubble Mind", desc: "Software Development Intern (Jun 2023 - Aug 2023)" },
+                { title: "MySQL Databases", desc: "Designed structured client record DBs & improved query reliability." },
+                { title: "Workflow Tuning", desc: "Collaborated to boost backend reporting performance." }
             ],
-            skills: [{ name: "Node.js" }, { name: "Python" }, { name: "Git" }],
-            moons: [{ name: "Problem Solving" }, { name: "Teamwork" }, { name: "Time Management" }]
+            skills: [{ name: "MySQL" }, { name: "Database Design" }, { name: "Query Optimization" }, { name: "Backend" }],
+            moons: [{ name: "Teamwork" }, { name: "Reporting" }, { name: "Client Systems" }]
         },
         {
-            name: "Mars",
+            name: "Mars (ERP System)",
             color: "#cd5c5c",
             size: 28,
             distance: 220,
             angle: 4.5,
             speed: 0.002,
-            milestones: [{ title: "Next Goal", desc: "Lead major project" }],
-            skills: [{ name: "Docker" }, { name: "AWS" }],
-            moons: [{ name: "Strategic Planning" }, { name: "Ambition" }]
+            milestones: [
+                { title: "ERP Platform", desc: "Centralized full-stack platform for inventory, billing & employees." },
+                { title: "50+ Operations", desc: "Relational MySQL schema supporting business-critical CRUD workflows." },
+                { title: "Responsive UI", desc: "Cross-module usability with HTML, CSS, JavaScript." }
+            ],
+            skills: [{ name: "Full-Stack" }, { name: "MySQL Schema" }, { name: "CRUD Flows" }],
+            moons: [{ name: "Inventory" }, { name: "Billing" }]
         },
         {
-            name: "Jupiter",
+            name: "Jupiter (AI Misinfo Detector)",
             color: "#d8ca9d",
             size: 55,
             distance: 280,
             angle: 6,
             speed: 0.0015,
-            milestones: [{ title: "Big Achievement", desc: "Scaled to millions" }],
-            skills: [{ name: "TypeScript" }, { name: "GraphQL" }, { name: "MongoDB" }, { name: "Redis" }],
-            moons: [{ name: "Leadership" }, { name: "Mentorship" }, { name: "Scalability Thinking" }]
+            milestones: [
+                { title: "NLP Verification", desc: "Built system to detect misleading information using NLP & ML." },
+                { title: "TF-IDF Pipeline", desc: "Implemented tokenization, text cleaning, and vectorization." },
+                { title: "Interactive Chatbot", desc: "AI chatbot returning credibility scores & explanations in natural language." }
+            ],
+            skills: [{ name: "NLP" }, { name: "TF-IDF" }, { name: "Scikit-learn" }, { name: "AI Chatbot" }],
+            moons: [{ name: "Credibility Scoring" }, { name: "Plugin Workflow" }, { name: "Real-time AI" }]
         },
         {
-            name: "Saturn",
+            name: "Saturn (Recommendation Engine)",
             color: "#fad5a5",
             size: 50,
             distance: 340,
             angle: 7.5,
             speed: 0.001,
-            milestones: [{ title: "Recognition", desc: "Industry awards" }],
-            skills: [{ name: "CI/CD" }, { name: "Microservices" }],
-            moons: [{ name: "Consistency" }, { name: "Attention to Detail" }]
+            milestones: [
+                { title: "Product Recommender", desc: "Content-based filtering model with Cosine Similarity." },
+                { title: "Data Processing", desc: "Processed metadata with Pandas & Scikit-learn for personal recommendations." }
+            ],
+            skills: [{ name: "Cosine Similarity" }, { name: "Pandas" }, { name: "Scikit-Learn" }],
+            moons: [{ name: "Metadata Analysis" }, { name: "Content-Based ML" }]
         },
         {
-            name: "Uranus",
+            name: "Uranus (Leadership)",
             color: "#4fd0e7",
             size: 42,
             distance: 400,
             angle: 9,
             speed: 0.0008,
-            milestones: [{ title: "Innovation", desc: "Introduced new tech" }],
-            skills: [{ name: "Machine Learning" }, { name: "Data Science" }],
-            moons: [{ name: "Creativity" }, { name: "Agility" }]
+            milestones: [
+                { title: "Hackathons", desc: "Active hacker & participant in technical workshops." },
+                { title: "Sports Coordination", desc: "Coordinated college sports events (planning, scheduling, management)." }
+            ],
+            skills: [{ name: "Leadership" }, { name: "Event Planning" }, { name: "Collaboration" }],
+            moons: [{ name: "Cross-Functional" }, { name: "Community" }]
         },
         {
-            name: "Neptune",
+            name: "Neptune (Target Roles)",
             color: "#4166f5",
             size: 40,
             distance: 460,
             angle: 10.5,
             speed: 0.0005,
-            milestones: [{ title: "Future Vision", desc: "Next big thing" }],
-            skills: [{ name: "Blockchain" }, { name: "Web3" }],
-            moons: [{ name: "Visionary" }, { name: "Patience" }]
+            milestones: [
+                { title: "Forward Deployed Eng.", desc: "Integrating core platforms with client environments." },
+                { title: "Software & AI Eng.", desc: "Developing production AI systems and scalable backend infrastructure." }
+            ],
+            skills: [{ name: "Forward Deployed" }, { name: "Software Eng." }, { name: "AI Platforms" }],
+            moons: [{ name: "Production ML" }, { name: "High Impact" }]
         }
     ]
 };
 
-// State
-let currentScreen = 'landing';
+// Global State
+let currentScreen = 'showcase'; // Default to modern showcase view!
 let galaxyScene, galaxyCamera, galaxyRenderer;
-let solarScene, solarCamera, solarRenderer;
 let detailedScene, detailedCamera, detailedRenderer;
 let animationId;
 let meteors = [];
 let meteorInterval;
 
-// Initialize
+// Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
+    populateShowcaseData();
     initEventListeners();
-    initGalaxy();
     initLandingStars();
 });
 
-// Global Navigation Functions
-window.navigateToResume = function (fromScreen) {
-    console.log("Navigating to Resume from:", fromScreen);
-    window.lastScreen = fromScreen || currentScreen;
-    showScreen('resume');
-}
+// Populate Modern Showcase UI
+function populateShowcaseData() {
+    // 1. Technical Skills Badges
+    const skillsGrid = document.getElementById('showcaseSkillsGrid');
+    if (skillsGrid) {
+        skillsGrid.innerHTML = '';
+        data.skillsCategories.forEach(cat => {
+            const card = document.createElement('div');
+            card.className = 'glass-card skill-category-card';
+            card.innerHTML = `
+                <div class="category-header">
+                    <span class="category-icon">${cat.icon}</span>
+                    <h3>${cat.category}</h3>
+                </div>
+                <div class="skills-pill-list">
+                    ${cat.skills.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+                </div>
+            `;
+            skillsGrid.appendChild(card);
+        });
+    }
 
-window.closeResume = function () {
-    console.log("Closing Resume, returning to:", window.lastScreen);
-    if (window.lastScreen) {
-        showScreen(window.lastScreen);
-        if (window.lastScreen === 'milkyway') animateGalaxy();
-        if (window.lastScreen === 'detailed') animateDetailedSolarSystem();
-    } else {
-        showScreen('landing');
+    // 2. Experience Timeline
+    const expContainer = document.getElementById('showcaseExperience');
+    if (expContainer) {
+        expContainer.innerHTML = '';
+        data.experience.forEach(exp => {
+            const card = document.createElement('div');
+            card.className = 'glass-card experience-card';
+            card.innerHTML = `
+                <div class="exp-header">
+                    <div>
+                        <h3>${exp.role}</h3>
+                        <div class="exp-company">${exp.company} • <span class="location">${exp.location}</span></div>
+                    </div>
+                    <span class="exp-duration">${exp.duration}</span>
+                </div>
+                <ul class="exp-highlights">
+                    ${exp.highlights.map(h => `<li>${h}</li>`).join('')}
+                </ul>
+            `;
+            expContainer.appendChild(card);
+        });
+    }
+
+    // 3. Featured Projects Grid
+    const projectsGrid = document.getElementById('showcaseProjectsGrid');
+    if (projectsGrid) {
+        projectsGrid.innerHTML = '';
+        data.projects.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'glass-card project-card';
+            card.innerHTML = `
+                <div class="project-category-badge">${proj.category}</div>
+                <h3>${proj.title}</h3>
+                <p class="project-tagline">${proj.tagline}</p>
+                <ul class="project-highlights">
+                    ${proj.highlights.map(h => `<li>${h}</li>`).join('')}
+                </ul>
+                <div class="project-tech-stack">
+                    ${proj.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+                </div>
+            `;
+            projectsGrid.appendChild(card);
+        });
+    }
+
+    // 4. Education Cards
+    const eduContainer = document.getElementById('showcaseEducation');
+    if (eduContainer) {
+        eduContainer.innerHTML = '';
+        data.education.forEach(edu => {
+            const card = document.createElement('div');
+            card.className = 'glass-card edu-card';
+            card.innerHTML = `
+                <div class="edu-header">
+                    <h3>${edu.degree}</h3>
+                    <span class="edu-duration">${edu.duration}</span>
+                </div>
+                <p class="edu-institution">${edu.institution}</p>
+                <p class="edu-details">${edu.details}</p>
+            `;
+            eduContainer.appendChild(card);
+        });
+    }
+
+    // 5. Coursework Pills
+    const courseworkList = document.getElementById('showcaseCoursework');
+    if (courseworkList) {
+        courseworkList.innerHTML = data.coursework.map(c => `<span class="course-badge">${c}</span>`).join('');
+    }
+
+    // 6. Leadership Bullet Points
+    const leadershipList = document.getElementById('showcaseLeadership');
+    if (leadershipList) {
+        leadershipList.innerHTML = data.leadership.map(l => `<li>${l}</li>`).join('');
     }
 }
 
-// Event Listeners
-function initEventListeners() {
-    // Landing Entrances
-    document.getElementById('enterBtn').addEventListener('click', () => {
-        showScreen('milkyway');
-        animateGalaxy();
-    });
+// Navigation Handlers
+window.showScreen = function(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(screenId);
+    if (target) target.classList.add('active');
+    currentScreen = screenId;
 
-    // Milky Way Interactions
-    document.getElementById('enterSolarBtn').addEventListener('click', () => {
-        showScreen('detailed');
+    if (screenId === 'milkyway') {
+        if (!galaxyScene) initGalaxy();
+        animateGalaxy();
+    } else if (screenId === 'detailed') {
         initDetailedSolarSystem();
-    });
+    }
+};
 
-    // Back Buttons
-    document.getElementById('backBtn').addEventListener('click', () => {
-        showScreen('milkyway');
-        animateGalaxy();
-    });
+window.navigateToResume = function (fromScreen) {
+    window.lastScreen = fromScreen || currentScreen;
+    showScreen('resume');
+};
 
-    document.getElementById('backToLandingBtn').addEventListener('click', () => {
-        showScreen('landing');
-    });
+window.closeResume = function () {
+    if (window.lastScreen) {
+        showScreen(window.lastScreen);
+    } else {
+        showScreen('showcase');
+    }
+};
 
-    // Planet Info Close
-    document.getElementById('closeInfo').addEventListener('click', () => {
-        document.getElementById('planetInfo').classList.remove('active');
-    });
+function initEventListeners() {
+    // Top Nav buttons
+    const enterUniverseBtn = document.getElementById('enterUniverseBtn');
+    if (enterUniverseBtn) {
+        enterUniverseBtn.addEventListener('click', () => {
+            showScreen('landing');
+        });
+    }
 
-    // Sidebar Menu
-    document.getElementById('menuBtn').addEventListener('click', () => {
-        document.getElementById('contentSidebar').classList.add('active');
-    });
+    const enterBtn = document.getElementById('enterBtn');
+    if (enterBtn) {
+        enterBtn.addEventListener('click', () => {
+            showScreen('milkyway');
+        });
+    }
 
-    document.getElementById('closeSidebar').addEventListener('click', () => {
-        document.getElementById('contentSidebar').classList.remove('active');
-    });
+    const enterSolarBtn = document.getElementById('enterSolarBtn');
+    if (enterSolarBtn) {
+        enterSolarBtn.addEventListener('click', () => {
+            showScreen('detailed');
+        });
+    }
+
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            showScreen('milkyway');
+        });
+    }
+
+    const backToLandingBtn = document.getElementById('backToLandingBtn');
+    if (backToLandingBtn) {
+        backToLandingBtn.addEventListener('click', () => {
+            showScreen('showcase');
+        });
+    }
+
+    const closeInfo = document.getElementById('closeInfo');
+    if (closeInfo) {
+        closeInfo.addEventListener('click', () => {
+            document.getElementById('planetInfo').classList.remove('active');
+        });
+    }
+
+    const menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            document.getElementById('contentSidebar').classList.add('active');
+        });
+    }
+
+    const closeSidebar = document.getElementById('closeSidebar');
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', () => {
+            document.getElementById('contentSidebar').classList.remove('active');
+        });
+    }
 
     populateSidebar();
 }
 
-function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-    currentScreen = screenId;
+function populateSidebar() {
+    const container = document.getElementById('sidebarContent');
+    if (!container) return;
+    container.innerHTML = '';
+
+    data.planets.forEach(planet => {
+        const card = document.createElement('div');
+        card.className = 'sidebar-planet-card';
+
+        const header = document.createElement('h3');
+        const dot = document.createElement('span');
+        dot.className = 'planet-dot';
+        dot.style.backgroundColor = planet.color;
+        header.appendChild(dot);
+        header.appendChild(document.createTextNode(planet.name));
+        card.appendChild(header);
+
+        if (planet.milestones && planet.milestones.length > 0) {
+            const section = document.createElement('div');
+            section.className = 'sidebar-section';
+            section.innerHTML = '<h4>Highlights & Milestones</h4>';
+            planet.milestones.forEach(m => {
+                const item = document.createElement('div');
+                item.style.fontSize = '0.9rem';
+                item.style.marginBottom = '6px';
+                item.innerHTML = `<strong style="color:#00F2FE;">${m.title}</strong>: ${m.desc}`;
+                section.appendChild(item);
+            });
+            card.appendChild(section);
+        }
+
+        if (planet.skills && planet.skills.length > 0) {
+            const section = document.createElement('div');
+            section.className = 'sidebar-section';
+            section.innerHTML = '<h4>Key Skills & Tech</h4>';
+            const skillList = document.createElement('div');
+            skillList.style.display = 'flex';
+            skillList.style.flexWrap = 'wrap';
+            skillList.style.gap = '6px';
+
+            planet.skills.forEach(s => {
+                const badge = document.createElement('span');
+                badge.style.background = 'rgba(79, 172, 254, 0.2)';
+                badge.style.border = '1px solid rgba(79, 172, 254, 0.4)';
+                badge.style.padding = '3px 10px';
+                badge.style.borderRadius = '12px';
+                badge.style.fontSize = '0.8rem';
+                badge.style.color = '#fff';
+                badge.textContent = s.name;
+                skillList.appendChild(badge);
+            });
+            section.appendChild(skillList);
+            card.appendChild(section);
+        }
+
+        container.appendChild(card);
+    });
 }
 
+function showPlanetInfo(planet) {
+    const info = document.getElementById('planetInfo');
+    if (!info) return;
+    document.getElementById('planetName').innerText = planet.name;
+    document.getElementById('planetName').style.color = planet.color;
+
+    const milestones = document.getElementById('milestones');
+    milestones.innerHTML = '<h3 style="color:#00F2FE; margin-bottom:10px;">Highlights & Milestones</h3>';
+    if (planet.milestones) {
+        planet.milestones.forEach(m => {
+            milestones.innerHTML += `<div class="milestone-item"><h4 style="color:#fff; margin-bottom:4px;">${m.title}</h4><p style="opacity:0.9;">${m.desc}</p></div>`;
+        });
+    }
+
+    const skills = document.getElementById('skills');
+    skills.innerHTML = '<h3 style="color:#4FACFE; margin-top:15px; margin-bottom:10px;">Key Skills & Technologies</h3>';
+    if (planet.skills) {
+        skills.innerHTML += `<div style="display:flex; flex-wrap:wrap; gap:8px;">${planet.skills.map(s => `<div class="skill-item">${s.name}</div>`).join('')}</div>`;
+    }
+
+    info.classList.add('active');
+}
+
+// Three.js Background Stars for Landing Screen
+function initLandingStars() {
+    const container = document.querySelector('.stars');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    container.appendChild(canvas);
+
+    const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Star {
+        constructor() {
+            this.x = Math.random() * canvas.width - canvas.width / 2;
+            this.y = Math.random() * canvas.height - canvas.height / 2;
+            this.z = Math.random() * 1000;
+        }
+
+        update() {
+            this.z -= 1.5;
+            if (this.z < 1) {
+                this.x = Math.random() * canvas.width - canvas.width / 2;
+                this.y = Math.random() * canvas.height - canvas.height / 2;
+                this.z = 1000;
+            }
+        }
+
+        draw() {
+            const x = (this.x / this.z) * 100 + canvas.width / 2;
+            const y = (this.y / this.z) * 100 + canvas.height / 2;
+            const s = (1 - this.z / 1000) * 2;
+
+            ctx.beginPath();
+            ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+            ctx.arc(x, y, s > 0 ? s : 0, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    const stars = Array(350).fill().map(() => new Star());
+
+    function animate() {
+        if (currentScreen === 'landing' || currentScreen === 'showcase') {
+            ctx.fillStyle = 'rgba(11, 15, 25, 0.4)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Three.js Galaxy Initialization
 function createStarTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
     const ctx = canvas.getContext('2d');
-
-    const centerX = 32;
-    const centerY = 32;
-
-    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 32);
+    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
     gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.8)');
-    gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.2)');
+    gradient.addColorStop(0.2, 'rgba(0, 242, 254, 0.8)');
+    gradient.addColorStop(0.5, 'rgba(79, 172, 254, 0.3)');
     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 64, 64);
-
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-    ctx.lineWidth = 2;
-    ctx.moveTo(10, 32);
-    ctx.lineTo(54, 32);
-    ctx.moveTo(32, 10);
-    ctx.lineTo(32, 54);
-    ctx.stroke();
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.needsUpdate = true;
@@ -223,13 +626,13 @@ function createStarTexture() {
 }
 
 function createMilkyWay() {
-    const particles = 30000;
+    const particles = 25000;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particles * 3);
     const colors = new Float32Array(particles * 3);
 
-    const innerColor = new THREE.Color(0xff6083);
-    const outerColor = new THREE.Color(0x1a1a2e);
+    const innerColor = new THREE.Color(0x00f2fe);
+    const outerColor = new THREE.Color(0x4facfe);
 
     for (let i = 0; i < particles; i++) {
         const i3 = i * 3;
@@ -282,40 +685,17 @@ function initGalaxy() {
     const milkyWay = createMilkyWay();
     galaxyScene.add(milkyWay);
 
-    const starTexture = createStarTexture();
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsMaterial = new THREE.PointsMaterial({
-        map: starTexture,
-        size: 1.5,
-        transparent: true,
-        alphaTest: 0.05,
-        blending: THREE.AdditiveBlending
-    });
-    const starsVertices = [];
-    for (let i = 0; i < 15000; i++) {
-        starsVertices.push(
-            (Math.random() - 0.5) * 4000,
-            (Math.random() - 0.5) * 4000,
-            (Math.random() - 0.5) * 4000
-        );
-    }
-    starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-    galaxyScene.add(new THREE.Points(starsGeometry, starsMaterial));
-
     const container = document.getElementById('goalsContainer');
-    container.innerHTML = '';
-    data.goals.forEach((goal) => {
-        const card = document.createElement('div');
-        card.className = 'goal-card';
-        card.innerHTML = `<h3>${goal.name}</h3><p>${goal.desc}</p>`;
-        card.style.borderColor = goal.color;
-        container.appendChild(card);
-    });
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-    galaxyScene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 1, 2000);
-    galaxyScene.add(pointLight);
+    if (container) {
+        container.innerHTML = '';
+        data.goals.forEach((goal) => {
+            const card = document.createElement('div');
+            card.className = 'goal-card';
+            card.innerHTML = `<h3>${goal.name}</h3><p>${goal.desc}</p>`;
+            card.style.borderColor = goal.color;
+            container.appendChild(card);
+        });
+    }
 
     galaxyCamera.position.set(0, 150, 1000);
     galaxyCamera.lookAt(0, 0, 0);
@@ -325,215 +705,149 @@ function animateGalaxy() {
     if (currentScreen !== 'milkyway') return;
 
     animationId = requestAnimationFrame(animateGalaxy);
-    galaxyScene.rotation.y += 0.0005;
+    if (galaxyScene) galaxyScene.rotation.y += 0.0005;
 
-    galaxyScene.children.forEach(child => {
-        if (child instanceof THREE.Points && child !== galaxyScene.children[0]) {
-            child.rotation.y -= 0.0002;
-        }
-    });
-
-    if (galaxyCamera.position.z > 300) {
+    if (galaxyCamera && galaxyCamera.position.z > 300) {
         galaxyCamera.position.z -= 15;
         galaxyCamera.lookAt(0, 0, 0);
     } else {
-        document.getElementById('enterSolarBtn').style.display = 'block';
+        const btn = document.getElementById('enterSolarBtn');
+        if (btn) btn.style.display = 'inline-block';
     }
 
-    galaxyRenderer.render(galaxyScene, galaxyCamera);
-}
-
-function showPlanetInfo(planet) {
-    const info = document.getElementById('planetInfo');
-    document.getElementById('planetName').innerText = planet.name;
-    document.getElementById('planetName').style.color = planet.color; // Match dot color
-
-    const milestones = document.getElementById('milestones');
-    milestones.innerHTML = '<h3>Milestones</h3>';
-    if (planet.milestones) {
-        planet.milestones.forEach(m => {
-            milestones.innerHTML += `<div class="milestone-item"><h4>${m.title}</h4><p>${m.desc}</p></div>`;
-        });
+    if (galaxyRenderer && galaxyScene && galaxyCamera) {
+        galaxyRenderer.render(galaxyScene, galaxyCamera);
     }
-
-    const skills = document.getElementById('skills');
-    skills.innerHTML = '<h3>Skills</h3>';
-    if (planet.skills) {
-        planet.skills.forEach(s => {
-            skills.innerHTML += `<div class="skill-item">${s.name}</div>`;
-        });
-    }
-
-    info.classList.add('active');
 }
 
-function populateSidebar() {
-    const container = document.getElementById('sidebarContent');
-    container.innerHTML = '';
-
-    data.planets.forEach(planet => {
-        const card = document.createElement('div');
-        card.className = 'sidebar-planet-card';
-
-        const header = document.createElement('h3');
-        const dot = document.createElement('span');
-        dot.className = 'planet-dot';
-        dot.style.backgroundColor = planet.color;
-        header.appendChild(dot);
-        header.appendChild(document.createTextNode(planet.name));
-        card.appendChild(header);
-
-        if (planet.milestones && planet.milestones.length > 0) {
-            const section = document.createElement('div');
-            section.className = 'sidebar-section';
-            section.innerHTML = '<h4>Milestones</h4>';
-            planet.milestones.forEach(m => {
-                const item = document.createElement('div');
-                item.style.fontSize = '0.9rem';
-                item.style.marginBottom = '5px';
-                item.innerHTML = `<strong>${m.title}</strong>: ${m.desc}`;
-                section.appendChild(item);
-            });
-            card.appendChild(section);
-        }
-
-        if (planet.skills && planet.skills.length > 0) {
-            const section = document.createElement('div');
-            section.className = 'sidebar-section';
-            section.innerHTML = '<h4>Skills</h4>';
-            const skillList = document.createElement('div');
-            skillList.style.display = 'flex';
-            skillList.style.flexWrap = 'wrap';
-            skillList.style.gap = '5px';
-
-            planet.skills.forEach(s => {
-                const badge = document.createElement('span');
-                badge.style.background = 'rgba(255,255,255,0.15)';
-                badge.style.padding = '2px 8px';
-                badge.style.borderRadius = '10px';
-                badge.style.fontSize = '0.8rem';
-                badge.textContent = s.name;
-                skillList.appendChild(badge);
-            });
-            section.appendChild(skillList);
-            card.appendChild(section);
-        }
-
-        container.appendChild(card);
-    });
-}
-
-// ... existing helper functions (createSunTexture etc) are preserved within initDetailed but let's make sure initDetailed is properly defined
-
+// 3D Solar System View
 function initDetailedSolarSystem() {
-    // ... (existing init code) ...
-    // Clear old
-    if (detailedRenderer) {
-        // ... (existing cleanup) ...
-        meteors.forEach(m => detailedScene.remove(m));
-        meteors = [];
-    }
-    // ... (existing setup) ...
+    const canvas = document.getElementById('detailedCanvas');
+    if (!canvas) return;
 
-    // START METEOR INTERVAL
+    detailedScene = new THREE.Scene();
+    detailedCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 5000);
+    detailedCamera.position.set(0, 350, 650);
+    detailedCamera.lookAt(0, 0, 0);
+
+    detailedRenderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    detailedRenderer.setSize(window.innerWidth, window.innerHeight);
+    detailedRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Sun Mesh
+    const sunGeo = new THREE.SphereGeometry(60, 32, 32);
+    const sunMat = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+    const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+    sunMesh.userData = { isSun: true, planetData: data.planets[0] };
+    detailedScene.add(sunMesh);
+
+    // Sun Light
+    const sunLight = new THREE.PointLight(0xffffff, 2, 2000);
+    detailedScene.add(sunLight);
+    detailedScene.add(new THREE.AmbientLight(0x404040, 1.5));
+
+    // System Group for Wobble
+    const systemGroup = new THREE.Group();
+    systemGroup.userData = { isSystemGroup: true, wobbleSpeed: 0.0005, baseTiltX: 0.2, baseTiltZ: 0.1 };
+    detailedScene.add(systemGroup);
+
+    // Raycaster for Planet Clicks
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    canvas.onclick = (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, detailedCamera);
+
+        const intersects = raycaster.intersectObjects(systemGroup.children, true);
+        if (intersects.length > 0) {
+            const hitObj = intersects[0].object;
+            if (hitObj.userData.planetData) {
+                showPlanetInfo(hitObj.userData.planetData);
+            }
+        } else {
+            const sunIntersect = raycaster.intersectObject(sunMesh);
+            if (sunIntersect.length > 0) {
+                showPlanetInfo(data.planets[0]);
+            }
+        }
+    };
+
+    // Add Planets
+    data.planets.slice(1).forEach(p => {
+        const pGeo = new THREE.SphereGeometry(p.size / 2.5, 24, 24);
+        const pMat = new THREE.MeshStandardMaterial({ color: p.color, roughness: 0.4 });
+        const pMesh = new THREE.Mesh(pGeo, pMat);
+
+        pMesh.userData = {
+            planetData: p,
+            distance: p.distance,
+            speed: p.speed,
+            angle: p.angle,
+            ovalRatio: 0.85
+        };
+
+        // Orbit Line
+        const orbitCurve = new THREE.EllipseCurve(0, 0, p.distance, p.distance * 0.85, 0, 2 * Math.PI, false, 0);
+        const points = orbitCurve.getPoints(64);
+        const orbitGeo = new THREE.BufferGeometry().setFromPoints(points.map(pt => new THREE.Vector3(pt.x, 0, pt.y)));
+        const orbitMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.15 });
+        const orbitLine = new THREE.Line(orbitGeo, orbitMat);
+        systemGroup.add(orbitLine);
+
+        systemGroup.add(pMesh);
+    });
+
     if (meteorInterval) clearInterval(meteorInterval);
-    meteorInterval = setInterval(spawnMeteorShower, 5000);
+    meteorInterval = setInterval(spawnMeteorShower, 4000);
 
     animateDetailedSolarSystem();
 }
 
-// Meteor Shower Logic
 function spawnMeteorShower() {
-    if (currentScreen !== 'detailed') return;
+    if (currentScreen !== 'detailed' || !detailedScene) return;
 
-    // Spawn 5-8 meteors
-    const count = Math.floor(Math.random() * 4) + 5;
-
-    for (let i = 0; i < count; i++) {
-        // Streak Geometry: Bottom radius 0, Top radius 1.5, Height 60
-        const geo = new THREE.CylinderGeometry(0, 1.5, 60, 8);
-        geo.rotateX(-Math.PI / 2); // Point forward
-
-        const mat = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.8
-        });
-
+    for (let i = 0; i < 4; i++) {
+        const geo = new THREE.CylinderGeometry(0, 1.2, 50, 8);
+        geo.rotateX(-Math.PI / 2);
+        const mat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, transparent: true, opacity: 0.8 });
         const mesh = new THREE.Mesh(geo, mat);
 
-        // Random Start Position (High up and varying X/Z)
-        const x = (Math.random() - 0.5) * 1500;
-        const y = 800 + Math.random() * 200;
-        const z = (Math.random() - 0.5) * 1500;
+        const x = (Math.random() - 0.5) * 1200;
+        const y = 600 + Math.random() * 200;
+        const z = (Math.random() - 0.5) * 1200;
 
         mesh.position.set(x, y, z);
-
-        // Random Direction (Downward and across)
-        const targetX = x + (Math.random() - 0.5) * 500;
-        const targetY = -500;
-        const targetZ = z + (Math.random() - 0.5) * 500;
-
-        const target = new THREE.Vector3(targetX, targetY, targetZ);
+        const target = new THREE.Vector3(x + (Math.random() - 0.5) * 400, -400, z + (Math.random() - 0.5) * 400);
         mesh.lookAt(target);
 
-        const velocity = target.sub(mesh.position).normalize().multiplyScalar(15 + Math.random() * 10); // Speed 15-25
-
-        mesh.userData = { velocity: velocity };
-
+        mesh.userData = { velocity: target.sub(mesh.position).normalize().multiplyScalar(18) };
         detailedScene.add(mesh);
         meteors.push(mesh);
     }
 }
 
 function animateDetailedSolarSystem() {
-    if (currentScreen !== 'detailed') return;
+    if (currentScreen !== 'detailed' || !detailedRenderer) return;
     requestAnimationFrame(animateDetailedSolarSystem);
 
-    const time = Date.now();
-
-    // 0. Rotate Sun
-    const sun = detailedScene.children.find(c => c.userData.isSun);
-    if (sun) sun.rotation.y -= 0.002;
-
-    // 1. Animate Shooting Stars (Background)
-    detailedScene.children.forEach(obj => {
-        if (obj.userData.isStarSystem) {
-            // ... existing star logic ...
-            const positions = obj.geometry.attributes.position.array;
-            for (let i = 2; i < positions.length; i += 3) {
-                positions[i] += 2;
-                if (positions[i] > 2000) positions[i] = -2000;
-            }
-            obj.geometry.attributes.position.needsUpdate = true;
-        }
-    });
-
-    // 2. Animate Meteors
+    // Animate Meteors
     for (let i = meteors.length - 1; i >= 0; i--) {
         const m = meteors[i];
         m.position.add(m.userData.velocity);
-
-        // Fade out
-        if (m.material.opacity > 0) m.material.opacity -= 0.005;
-
-        // Remove if too far
-        if (m.position.y < -1000 || m.material.opacity <= 0) {
+        m.material.opacity -= 0.008;
+        if (m.position.y < -500 || m.material.opacity <= 0) {
             detailedScene.remove(m);
             meteors.splice(i, 1);
         }
     }
 
-    // 3. Animate Groups (Wobble) & Planets (Revolve)
+    // Revolving Planets
     detailedScene.children.forEach(group => {
-        if (group.userData.isSystemGroup) {
-            // ... existing wobble logic ...
-            group.rotation.x = Math.sin(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltX;
-            group.rotation.z = Math.cos(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltZ;
-
+        if (group.userData && group.userData.isSystemGroup) {
             group.children.forEach(child => {
-                if (child.userData.planetData) {
-                    // ... existing orbit logic ...
+                if (child.userData && child.userData.planetData) {
                     child.userData.angle += child.userData.speed;
                     const rX = child.userData.distance;
                     const rZ = child.userData.distance * child.userData.ovalRatio;
@@ -547,901 +861,3 @@ function animateDetailedSolarSystem() {
 
     detailedRenderer.render(detailedScene, detailedCamera);
 }
-
-
-function initLandingStars() {
-    const container = document.querySelector('.stars');
-    if (!container) return;
-
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    container.appendChild(canvas);
-
-    // Resize
-    const resize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', resize);
-    resize();
-
-    // Star class for warp effect
-    class Star {
-        constructor() {
-            this.x = Math.random() * canvas.width - canvas.width / 2;
-            this.y = Math.random() * canvas.height - canvas.height / 2;
-            this.z = Math.random() * 1000; // Depth
-            this.pz = this.z; // Previous z for trails if wanted, or just for movement
-        }
-
-        update() {
-            this.z -= 2; // Speed decreased from 10
-            if (this.z < 1) {
-                this.x = Math.random() * canvas.width - canvas.width / 2;
-                this.y = Math.random() * canvas.height - canvas.height / 2;
-                this.z = 1000;
-                this.pz = 1000;
-            }
-        }
-
-        draw() {
-            const x = (this.x / this.z) * 100 + canvas.width / 2;
-            const y = (this.y / this.z) * 100 + canvas.height / 2;
-
-            // Size based on depth
-            const s = (1 - this.z / 1000) * 2.5;
-
-            ctx.beginPath();
-            ctx.fillStyle = "white";
-            ctx.arc(x, y, s > 0 ? s : 0, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    // Create stars
-    const stars = Array(400).fill().map(() => new Star());
-
-    function animate() {
-        if (currentScreen !== 'landing') return; // Pause when not viewing
-
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)'; // Tails/Blur effect
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        stars.forEach(star => {
-            star.update();
-            star.draw();
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Modify showScreen to restart animation if needed
-    const oldShowScreen = window.showScreen;
-    // We already defined showScreen below, but let's hook into it naturally in the loop above or just let it run.
-    // The animate loop checks currentScreen.
-}
-
-function initEventListeners() {
-    document.getElementById('enterBtn').addEventListener('click', () => {
-        showScreen('milkyway');
-        animateGalaxy();
-    });
-
-    document.getElementById('enterSolarBtn').addEventListener('click', () => {
-        showScreen('detailed');
-        initDetailedSolarSystem();
-    });
-
-    // exploreBtn removed
-
-    document.getElementById('backBtn').addEventListener('click', () => {
-        showScreen('milkyway');
-        animateGalaxy();
-    });
-
-    document.getElementById('backToLandingBtn').addEventListener('click', () => {
-        showScreen('landing');
-    });
-
-    document.getElementById('closeInfo').addEventListener('click', () => {
-        document.getElementById('planetInfo').classList.remove('active');
-    });
-
-    // Sidebar Menu
-    document.getElementById('menuBtn').addEventListener('click', () => {
-        document.getElementById('contentSidebar').classList.add('active');
-    });
-
-    document.getElementById('closeSidebar').addEventListener('click', () => {
-        document.getElementById('contentSidebar').classList.remove('active');
-    });
-
-    populateSidebar();
-}
-
-function populateSidebar() {
-    const container = document.getElementById('sidebarContent');
-    container.innerHTML = '';
-
-    data.planets.forEach(planet => {
-        const card = document.createElement('div');
-        card.className = 'sidebar-planet-card';
-
-        // Header
-        const header = document.createElement('h3');
-        const dot = document.createElement('span');
-        dot.className = 'planet-dot';
-        dot.style.backgroundColor = planet.color;
-        header.appendChild(dot);
-        header.appendChild(document.createTextNode(planet.name));
-        card.appendChild(header);
-
-        // Milestones
-        if (planet.milestones && planet.milestones.length > 0) {
-            const section = document.createElement('div');
-            section.className = 'sidebar-section';
-            section.innerHTML = '<h4>Milestones</h4>';
-            planet.milestones.forEach(m => {
-                const item = document.createElement('div');
-                item.style.fontSize = '0.9rem';
-                item.style.marginBottom = '5px';
-                item.innerHTML = `<strong>${m.title}</strong>: ${m.desc}`;
-                section.appendChild(item);
-            });
-            card.appendChild(section);
-        }
-
-        // Skills
-        if (planet.skills && planet.skills.length > 0) {
-            const section = document.createElement('div');
-            section.className = 'sidebar-section';
-            section.innerHTML = '<h4>Skills</h4>';
-            const skillList = document.createElement('div');
-            skillList.style.display = 'flex';
-            skillList.style.flexWrap = 'wrap';
-            skillList.style.gap = '5px';
-
-            planet.skills.forEach(s => {
-                const badge = document.createElement('span');
-                badge.style.background = 'rgba(255,255,255,0.15)';
-                badge.style.padding = '2px 8px';
-                badge.style.borderRadius = '10px';
-                badge.style.fontSize = '0.8rem';
-                badge.textContent = s.name;
-                skillList.appendChild(badge);
-            });
-            section.appendChild(skillList);
-            card.appendChild(section);
-        }
-
-        container.appendChild(card);
-    });
-}
-
-function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-    currentScreen = screenId;
-}
-
-// Create star texture for Three.js points
-// Create star texture for Three.js points
-function createStarTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-
-    // Draw soft glowing star (radial gradient)
-    const centerX = 32;
-    const centerY = 32;
-
-    // Main glow
-    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.8)');
-    gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.2)');
-    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
-
-    // Core sparkle cross
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-    ctx.lineWidth = 2;
-    // Horizontal
-    ctx.moveTo(10, 32);
-    ctx.lineTo(54, 32);
-    // Vertical
-    ctx.moveTo(32, 10);
-    ctx.lineTo(32, 54);
-    ctx.stroke();
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-}
-
-// Create Milky Way Galaxy
-// Create Milky Way Galaxy
-function createMilkyWay() {
-    const particles = 30000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particles * 3);
-    const colors = new Float32Array(particles * 3);
-
-    const innerColor = new THREE.Color(0xff6083);
-    const outerColor = new THREE.Color(0x1a1a2e);
-
-    for (let i = 0; i < particles; i++) {
-        const i3 = i * 3;
-        const radius = Math.random() * 600;
-        const spinAngle = radius * 0.3;
-        const branchAngle = (i % 4) / 4 * Math.PI * 2;
-
-        const x = Math.cos(branchAngle + spinAngle) * radius;
-        const y = (Math.random() - 0.5) * 40;
-        const z = Math.sin(branchAngle + spinAngle) * radius;
-
-        positions[i3] = x;
-        positions[i3 + 1] = y;
-        positions[i3 + 2] = z;
-
-        const mixedColor = innerColor.clone();
-        mixedColor.lerp(outerColor, radius / 600);
-
-        colors[i3] = mixedColor.r;
-        colors[i3 + 1] = mixedColor.g;
-        colors[i3 + 2] = mixedColor.b;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    // Use Star Texture
-    const starTexture = createStarTexture();
-    const material = new THREE.PointsMaterial({
-        size: 3.5, // slightly larger for visibility
-        map: starTexture,
-        vertexColors: true,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        alphaTest: 0.05
-    });
-
-    return new THREE.Points(geometry, material);
-}
-
-function initGalaxy() {
-    const canvas = document.getElementById('galaxyCanvas');
-    if (!canvas) return;
-
-    galaxyScene = new THREE.Scene();
-    galaxyCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-    galaxyRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    galaxyRenderer.setSize(window.innerWidth, window.innerHeight);
-    galaxyRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Create Milky Way
-    const milkyWay = createMilkyWay();
-    galaxyScene.add(milkyWay);
-
-    // Background stars with star shape texture
-    const starTexture = createStarTexture();
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsMaterial = new THREE.PointsMaterial({
-        map: starTexture,
-        size: 1.5,
-        transparent: true,
-        alphaTest: 0.05,
-        blending: THREE.AdditiveBlending
-    });
-    const starsVertices = [];
-    for (let i = 0; i < 15000; i++) {
-        starsVertices.push(
-            (Math.random() - 0.5) * 4000,
-            (Math.random() - 0.5) * 4000,
-            (Math.random() - 0.5) * 4000
-        );
-    }
-    starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-    galaxyScene.add(new THREE.Points(starsGeometry, starsMaterial));
-
-    // Create goal solar systems
-    data.goals.forEach((goal, i) => {
-        const angle = (i / data.goals.length) * Math.PI * 2;
-        const radius = 350 + Math.random() * 250;
-        const x = Math.cos(angle) * radius;
-        const z = Math.sin(angle) * radius;
-        const y = (Math.random() - 0.5) * 100;
-
-        const geometry = new THREE.SphereGeometry(18, 32, 32);
-        const material = new THREE.MeshPhongMaterial({
-            color: goal.color,
-            emissive: goal.color,
-            emissiveIntensity: 0.7
-        });
-        const sphere = new THREE.Mesh(geometry, material);
-        sphere.position.set(x, y, z);
-        sphere.userData = { goal };
-        galaxyScene.add(sphere);
-
-        // Glow
-        for (let j = 1; j <= 2; j++) {
-            const glowGeo = new THREE.SphereGeometry(18 + j * 4, 16, 16);
-            const glowMat = new THREE.MeshBasicMaterial({
-                color: goal.color,
-                transparent: true,
-                opacity: 0.2 / j
-            });
-            const glow = new THREE.Mesh(glowGeo, glowMat);
-            glow.position.set(x, y, z);
-            galaxyScene.add(glow);
-        }
-    });
-
-    // Create goal cards
-    const container = document.getElementById('goalsContainer');
-    data.goals.forEach((goal, i) => {
-        const card = document.createElement('div');
-        card.className = 'goal-card';
-        card.innerHTML = `<h3>${goal.name}</h3><p>${goal.desc}</p>`;
-        card.style.borderColor = goal.color;
-        container.appendChild(card);
-    });
-
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-    galaxyScene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 1, 2000);
-    galaxyScene.add(pointLight);
-
-    galaxyCamera.position.set(0, 150, 1000);
-    galaxyCamera.lookAt(0, 0, 0);
-}
-
-function animateGalaxy() {
-    if (currentScreen !== 'milkyway') return;
-
-    animationId = requestAnimationFrame(animateGalaxy);
-    // Rotate galaxy and stars differently for parallax
-    galaxyScene.rotation.y += 0.0005;
-
-    // Find background stars (the second Points object usually)
-    galaxyScene.children.forEach(child => {
-        if (child instanceof THREE.Points && child !== galaxyScene.children[0]) {
-            child.rotation.y -= 0.0002; // Counter-rotate stars slightly
-        }
-    });
-
-    // Zoom animation
-    if (galaxyCamera.position.z > 300) {
-        galaxyCamera.position.z -= 15;
-        galaxyCamera.lookAt(0, 0, 0);
-    } else {
-        document.getElementById('enterSolarBtn').style.display = 'block';
-    }
-
-    galaxyRenderer.render(galaxyScene, galaxyCamera);
-}
-
-
-
-
-function initDetailedSolarSystem() {
-    const canvas = document.getElementById('detailedCanvas');
-    if (!canvas) return;
-
-    if (detailedRenderer) {
-        detailedRenderer.dispose();
-        const newCanvas = canvas.cloneNode(true);
-        canvas.parentNode.replaceChild(newCanvas, canvas);
-        return initDetailedSolarSystem();
-    }
-
-    // Clear old meteors
-    meteors.forEach(m => {
-        if (m.geometry) m.geometry.dispose();
-        if (m.material) m.material.dispose();
-    });
-    meteors = [];
-
-    detailedScene = new THREE.Scene();
-
-    // Camera
-    detailedCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 10000);
-    detailedCamera.position.set(0, 900, 1200);
-    detailedCamera.lookAt(0, -150, 0);
-
-    detailedRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('detailedCanvas'), antialias: true, alpha: true });
-    detailedRenderer.setSize(window.innerWidth, window.innerHeight);
-    detailedRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Reduced ambient for more contrast
-    detailedScene.add(ambientLight);
-
-    // Sun Light
-    const sunLight = new THREE.PointLight(0xffd700, 2.0, 3000);
-    detailedScene.add(sunLight);
-
-    // Directional Light for better 3D shadows/form on planets
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight.position.set(0, 500, 500);
-    detailedScene.add(dirLight);
-
-    // Shooting Stars (Background)
-    const starGeo = new THREE.BufferGeometry();
-    const starCount = 6000;
-    const starPos = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i += 3) {
-        starPos[i] = (Math.random() - 0.5) * 4000;     // x
-        starPos[i + 1] = (Math.random() - 0.5) * 2000;   // y
-        starPos[i + 2] = (Math.random() - 0.5) * 4000;   // z
-    }
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 2, transparent: true, opacity: 0.8 });
-    const starSystem = new THREE.Points(starGeo, starMat);
-    starSystem.userData = { isStarSystem: true };
-    detailedScene.add(starSystem);
-
-    // Sun Texture
-    const sunTexture = createSunTexture();
-
-    // Sun Mesh
-    const sunGeo = new THREE.SphereGeometry(60, 64, 64);
-    const sunMat = new THREE.MeshBasicMaterial({
-        map: sunTexture,
-        color: 0xffdd00
-    });
-    const sunMesh = new THREE.Mesh(sunGeo, sunMat);
-    sunMesh.userData = { isSun: true };
-    detailedScene.add(sunMesh);
-
-    // Sun Glow
-    const glowGeo = new THREE.SphereGeometry(72, 64, 64);
-    const glowMat = new THREE.MeshBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.25 });
-    const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-    glowMesh.userData = { isGlow: true };
-    detailedScene.add(glowMesh);
-
-    // Planets & Orbits
-    data.planets.forEach((planet, index) => {
-        if (planet.name === 'Sun') return;
-
-        const distance = planet.distance * 2.0;
-        const size = planet.size;
-        const ovalRatio = 0.8;
-
-        // System Group
-        const systemGroup = new THREE.Group();
-        systemGroup.userData = {
-            isSystemGroup: true,
-            baseTiltX: Math.random() * 0.2,
-            baseTiltZ: Math.random() * 0.2,
-            wobbleSpeed: 0.0005 + Math.random() * 0.001
-        };
-        detailedScene.add(systemGroup);
-
-        // Orbit Ring
-        const orbitGeo = new THREE.RingGeometry(distance - 2, distance + 2, 128);
-        const orbitMat = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.4
-        });
-        const orbitMesh = new THREE.Mesh(orbitGeo, orbitMat);
-        orbitMesh.rotation.x = -Math.PI / 2;
-        orbitMesh.scale.y = ovalRatio;
-        systemGroup.add(orbitMesh);
-
-        // Planet Mesh
-        const planetGeo = new THREE.SphereGeometry(size, 64, 64);
-
-        // Procedural Texture
-        const pTexture = createPlanetTexture(planet);
-
-        const planetMat = new THREE.MeshStandardMaterial({
-            map: pTexture,
-            color: 0xffffff, // Let texture color take over
-            roughness: 0.8,
-            metalness: 0.1
-        });
-        const planetMesh = new THREE.Mesh(planetGeo, planetMat);
-
-        // Planet state
-        planetMesh.userData = {
-            angle: Math.random() * Math.PI * 2,
-            distance: distance,
-            ovalRatio: ovalRatio,
-            speed: planet.speed * 0.5,
-            planetData: planet
-        };
-
-        // Atmosphere Glow (for Earth/Venus/Neptune)
-        if (['Earth', 'Venus', 'Neptune', 'Uranus'].includes(planet.name)) {
-            const atmoGeo = new THREE.SphereGeometry(size * 1.1, 32, 32);
-            const atmoMat = new THREE.MeshBasicMaterial({
-                color: planet.color,
-                transparent: true,
-                opacity: 0.2,
-                side: THREE.BackSide
-            });
-            const atmo = new THREE.Mesh(atmoGeo, atmoMat);
-            planetMesh.add(atmo);
-        }
-
-        // Saturn Rings
-        if (planet.name === 'Saturn') {
-            const ringGeo = new THREE.RingGeometry(size * 1.4, size * 2.2, 64);
-            const ringMat = new THREE.MeshBasicMaterial({
-                color: 0xcfb56b,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.7
-            });
-            const rings = new THREE.Mesh(ringGeo, ringMat);
-            rings.rotation.x = Math.PI / 2;
-            planetMesh.add(rings);
-        }
-
-        // Moons (Soft Skills)
-        if (planet.moons) {
-            planet.moons.forEach((moon, i) => {
-                const moonSize = size * 0.25;
-                const moonDist = size * 2.0 + (i * 12);
-
-                const moonGeo = new THREE.SphereGeometry(moonSize, 16, 16);
-                const moonMat = new THREE.MeshStandardMaterial({
-                    color: 0xcccccc,
-                    roughness: 0.8
-                });
-                const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-
-                // Starting position
-                const angle = (i / planet.moons.length) * Math.PI * 2;
-                moonMesh.position.set(
-                    Math.cos(angle) * moonDist,
-                    0,
-                    Math.sin(angle) * moonDist
-                );
-
-                moonMesh.userData = {
-                    isMoon: true,
-                    angle: angle,
-                    distance: moonDist,
-                    speed: 0.02 + (Math.random() * 0.02)
-                };
-
-                planetMesh.add(moonMesh);
-            });
-        }
-
-        systemGroup.add(planetMesh);
-    });
-
-    // Interaction
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-
-    function onInteract(event) {
-        if (currentScreen !== 'detailed') return;
-
-        const rect = detailedRenderer.domElement.getBoundingClientRect();
-        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, detailedCamera);
-        const intersects = raycaster.intersectObjects(detailedScene.children, true);
-
-        let hovered = false;
-        for (let hit of intersects) {
-            // Check if it's a planet (SphereGeometry) and has data
-            if (hit.object.geometry && hit.object.geometry.type === 'SphereGeometry' && hit.object.userData.planetData) {
-                hovered = true;
-                if (event.type === 'click') {
-                    showPlanetInfo(hit.object.userData.planetData);
-                }
-                break;
-            }
-        }
-        document.body.style.cursor = hovered ? 'pointer' : 'default';
-    }
-
-    window.addEventListener('mousemove', onInteract);
-    window.addEventListener('click', onInteract);
-
-    // Start Meteor Shower Interval
-    if (meteorInterval) clearInterval(meteorInterval);
-    meteorInterval = setInterval(spawnMeteorShower, 2000); // More frequent: every 2s
-
-    animateDetailedSolarSystem();
-}
-
-// Procedural Planet Textures
-function createPlanetTexture(planet) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-
-    // Fill base
-    ctx.fillStyle = planet.color;
-    ctx.fillRect(0, 0, 512, 512);
-
-    const name = planet.name;
-
-    // Noise/Crater Pattern (Rocky)
-    if (['Mercury', 'Venus', 'Mars'].includes(name)) {
-        for (let i = 0; i < 400; i++) {
-            const x = Math.random() * 512;
-            const y = Math.random() * 512;
-            const size = Math.random() * 20 + 5;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0,0,0, ${Math.random() * 0.1})`; // Dark spots
-            ctx.fill();
-        }
-        // Highlights
-        for (let i = 0; i < 200; i++) {
-            const x = Math.random() * 512;
-            const y = Math.random() * 512;
-            const size = Math.random() * 10;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255,255,255, ${Math.random() * 0.1})`;
-            ctx.fill();
-        }
-    }
-    // Gas Giant Pattern (Bands)
-    else if (['Jupiter', 'Saturn', 'Uranus', 'Neptune'].includes(name)) {
-        // Horizontal bands with blur
-        const bands = 10;
-        const h = 512 / bands;
-        for (let i = 0; i < bands; i++) {
-            ctx.fillStyle = `rgba(255,255,255, ${Math.random() * 0.2})`;
-            ctx.fillRect(0, i * h, 512, h);
-        }
-        // Swirls
-        for (let i = 0; i < 50; i++) {
-            const x = Math.random() * 512;
-            const y = Math.random() * 512;
-            const w = Math.random() * 100 + 50;
-            const ht = Math.random() * 20 + 5;
-            ctx.fillStyle = `rgba(0,0,0, ${Math.random() * 0.05})`;
-            ctx.fillRect(x, y, w, ht);
-        }
-    }
-    // Earth-like
-    else if (name === 'Earth') {
-        // Continents (approximated by large green blobs)
-        ctx.fillStyle = '#2e8b57'; // Sea Green
-        for (let i = 0; i < 20; i++) {
-            const x = Math.random() * 512;
-            const y = Math.random() * 512;
-            const rad = Math.random() * 80 + 30;
-            ctx.beginPath();
-            ctx.arc(x, y, rad, 0, Math.PI * 2);
-            ctx.fill();
-        }
-        // Clouds
-        ctx.fillStyle = 'rgba(255,255,255,0.4)';
-        for (let i = 0; i < 50; i++) {
-            const x = Math.random() * 512;
-            const y = Math.random() * 512;
-            const w = Math.random() * 100 + 20;
-            const ht = Math.random() * 30 + 10;
-            ctx.fillRect(x, y, w, ht);
-        }
-    }
-
-    const texture = new THREE.CanvasTexture(canvas);
-    return texture;
-}
-
-function createSunTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 512;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#ffcc00';
-    ctx.fillRect(0, 0, 512, 512);
-    for (let i = 0; i < 200; i++) {
-        const x = Math.random() * 512;
-        const y = Math.random() * 512;
-        const radius = Math.random() * 40 + 10;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, ${Math.floor(Math.random() * 100 + 50)}, 0, ${Math.random() * 0.2 + 0.1})`;
-        ctx.fill();
-    }
-    for (let i = 0; i < 1000; i++) {
-        const x = Math.random() * 512;
-        const y = Math.random() * 512;
-        const w = Math.random() * 20;
-        const h = Math.random() * 10;
-        ctx.fillStyle = `rgba(255, 200, 0, 0.3)`;
-        ctx.fillRect(x, y, w, h);
-    }
-    const texture = new THREE.CanvasTexture(canvas);
-    return texture;
-}
-
-// Meteor Shower Logic
-function spawnMeteorShower() {
-    if (currentScreen !== 'detailed') return;
-
-    // Spawn 5-8 meteors
-    const count = Math.floor(Math.random() * 4) + 5;
-
-    for (let i = 0; i < count; i++) {
-        // Streak: Tip 0, Tail 1.5, Long
-        const geo = new THREE.CylinderGeometry(0, 2, 80, 8);
-        geo.rotateX(-Math.PI / 2); // Point forward
-
-        const mat = new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.8
-        });
-
-        const mesh = new THREE.Mesh(geo, mat);
-
-        // Random Start (Top hemisphere)
-        const x = (Math.random() - 0.5) * 2000;
-        const y = 800 + Math.random() * 400;
-        const z = (Math.random() - 0.5) * 2000;
-
-        mesh.position.set(x, y, z);
-
-        // Target random point below
-        const targetX = x + (Math.random() - 0.5) * 500;
-        const targetY = -800;
-        const targetZ = z + (Math.random() - 0.5) * 500;
-
-        const target = new THREE.Vector3(targetX, targetY, targetZ);
-        mesh.lookAt(target);
-
-        const velocity = target.sub(mesh.position).normalize().multiplyScalar(25 + Math.random() * 10);
-
-        mesh.userData = { velocity: velocity };
-
-        detailedScene.add(mesh);
-        meteors.push(mesh);
-    }
-}
-
-function animateDetailedSolarSystem() {
-    if (currentScreen !== 'detailed') return;
-    requestAnimationFrame(animateDetailedSolarSystem);
-
-    const time = Date.now();
-
-    // 0. Rotate Sun
-    const sun = detailedScene.children.find(c => c.userData.isSun);
-    if (sun) sun.rotation.y -= 0.002;
-
-    // 1. Animate Shooting Stars
-    detailedScene.children.forEach(obj => {
-        if (obj.userData.isStarSystem) {
-            const positions = obj.geometry.attributes.position.array;
-            for (let i = 2; i < positions.length; i += 3) {
-                positions[i] += 2;
-                if (positions[i] > 2000) positions[i] = -2000;
-            }
-            obj.geometry.attributes.position.needsUpdate = true;
-        }
-    });
-
-    // 2. Animate Meteors
-    for (let i = meteors.length - 1; i >= 0; i--) {
-        const m = meteors[i];
-        m.position.add(m.userData.velocity);
-
-        if (m.material.opacity > 0) m.material.opacity -= 0.01; // Fade faster
-
-        if (m.position.y < -1500 || m.material.opacity <= 0) {
-            detailedScene.remove(m);
-            meteors.splice(i, 1);
-        }
-    }
-
-    // 3. Animate Groups (Wobble) & Planets (Revolve)
-    detailedScene.children.forEach(group => {
-        if (group.userData.isSystemGroup) {
-            group.rotation.x = Math.sin(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltX;
-            group.rotation.z = Math.cos(time * group.userData.wobbleSpeed) * 0.1 + group.userData.baseTiltZ;
-
-            group.children.forEach(child => {
-                if (child.userData.planetData) {
-                    child.userData.angle += child.userData.speed;
-                    const rX = child.userData.distance;
-                    const rZ = child.userData.distance * child.userData.ovalRatio;
-
-                    child.position.x = Math.cos(child.userData.angle) * rX;
-                    child.position.z = Math.sin(child.userData.angle) * rZ;
-
-                    // Rotate planet on its own axis
-                    child.rotation.y += 0.005;
-
-                    // Animate Moons attached to planet
-                    child.children.forEach(grandchild => {
-                        if (grandchild.userData.isMoon) {
-                            grandchild.userData.angle += grandchild.userData.speed;
-                            const mDist = grandchild.userData.distance;
-                            grandchild.position.x = Math.cos(grandchild.userData.angle) * mDist;
-                            grandchild.position.z = Math.sin(grandchild.userData.angle) * mDist;
-                        }
-                    });
-                }
-            });
-        }
-    });
-
-    detailedRenderer.render(detailedScene, detailedCamera);
-}
-
-function showPlanetInfo(planet) {
-    const info = document.getElementById('planetInfo');
-    document.getElementById('planetName').textContent = planet.name;
-    document.getElementById('planetName').style.color = planet.color;
-
-    const milestonesDiv = document.getElementById('milestones');
-    milestonesDiv.innerHTML = '<h4>Milestones:</h4>';
-    if (planet.milestones) {
-        planet.milestones.forEach(m => {
-            const item = document.createElement('div');
-            item.className = 'milestone-item';
-            item.innerHTML = `<strong>${m.title}</strong><p>${m.desc}</p>`;
-            milestonesDiv.appendChild(item);
-        });
-    }
-
-    const skillsDiv = document.getElementById('skills');
-    skillsDiv.innerHTML = '<h4>Hard Skills (Tech):</h4>';
-    if (planet.skills) {
-        planet.skills.forEach(s => {
-            const item = document.createElement('div');
-            item.className = 'skill-item';
-            item.innerHTML = `<strong>${s.name}</strong>`;
-            skillsDiv.appendChild(item);
-        });
-    }
-
-    // Moons as Soft Skills
-    if (planet.moons && planet.moons.length > 0) {
-        skillsDiv.innerHTML += '<h4 style="margin-top:15px; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">Soft Skills (Moons):</h4>';
-        planet.moons.forEach(m => {
-            const item = document.createElement('div');
-            item.className = 'skill-item';
-            item.style.borderColor = '#ffffff';
-            item.innerHTML = `<strong>${m.name}</strong>`;
-            skillsDiv.appendChild(item);
-        });
-    }
-
-    info.classList.add('active');
-}
-
-// Handle resize
-window.addEventListener('resize', () => {
-    if (galaxyRenderer) {
-        galaxyCamera.aspect = window.innerWidth / window.innerHeight;
-        galaxyCamera.updateProjectionMatrix();
-        galaxyRenderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    if (solarRenderer) {
-        solarCamera.aspect = window.innerWidth / window.innerHeight;
-        solarCamera.updateProjectionMatrix();
-        solarRenderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    if (detailedRenderer) {
-        detailedCamera.aspect = window.innerWidth / window.innerHeight;
-        detailedCamera.updateProjectionMatrix();
-        detailedRenderer.setSize(window.innerWidth, window.innerHeight);
-    }
-});

@@ -4,60 +4,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milky Way Portfolio</title>
+    <title>Nikhil Yadav | Software Engineer & AI Applications</title>
+    <meta name="description" content="Portfolio of Nikhil Yadav - Software Engineer specializing in Full-Stack Development, Data Systems, MySQL Schemas, and AI Applications." />
+    <meta name="author" content="Nikhil Yadav" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Landing Page -->
-    <div id="landing" class="screen active">
-        <div class="stars"></div>
-        <div class="content">
-            <h1 class="title">Welcome to My Universe</h1>
 
-            <div class="about-section">
-                <h3>About This Universe</h3>
-                <p>This 3D portfolio visualizes my professional life as a solar system. Each planet represents a
-                    different skill set or milestone, orbiting around my core nucleus. Travel through the galaxy to see
-                    where I'm headed, and dive into the solar system to see where I've been.</p>
+    <!-- Floating Top Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#overview" onclick="showScreen('showcase')" class="nav-brand">
+                <span class="brand-avatar">NY</span>
+                <span class="brand-name">Nikhil Yadav</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#skills" onclick="showScreen('showcase')">Skills</a>
+                <a href="#experience" onclick="showScreen('showcase')">Experience</a>
+                <a href="#projects" onclick="showScreen('showcase')">Projects</a>
+                <a href="#education" onclick="showScreen('showcase')">Education</a>
+                <a href="#contact" onclick="showScreen('showcase')">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
+                    🌌 3D Universe
+                </button>
+                <button class="btn btn-primary-glow" onclick="navigateToResume('showcase')">
+                    📄 View Resume
+                </button>
             </div>
+        </div>
+    </header>
 
+    <!-- Background Starfield Animation -->
+    <div class="stars"></div>
+
+    <!-- MAIN SCREEN 1: Modern Showcase Portfolio (Default View) -->
+    <div id="showcase" class="screen active">
+        <div class="showcase-container">
+            
+            <!-- Hero Section -->
+            <section id="overview" class="hero-section">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    CS @ SRMU '26 • Open to Forward Deployed & Software Eng Roles
+                </div>
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Nikhil Yadav</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    Software Engineer | Full-Stack Development, Data Systems & AI Applications
+                </h2>
+                <p class="hero-bio">
+                    Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and ML frameworks.
+                </p>
+
+                <!-- Quick Info Contact Chips -->
+                <div class="hero-contact-chips">
+                    <a href="mailto:nikhil3nika@gmail.com" class="chip">
+                        <span>📧</span> nikhil3nika@gmail.com
+                    </a>
+                    <a href="tel:+917518987201" class="chip">
+                        <span>📞</span> +91-7518987201
+                    </a>
+                    <span class="chip">
+                        <span>📍</span> Lucknow, UP, India
+                    </span>
+                    <a href="https://github.com/nikpomp" target="_blank" rel="noopener" class="chip">
+                        <span>🐙</span> github.com/nikpomp
+                    </a>
+                    <a href="https://linkedin.com/in/unk17" target="_blank" rel="noopener" class="chip">
+                        <span>💼</span> linkedin.com/in/unk17
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary-glow">Explore Projects</a>
+                    <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
+                        🌌 Experience 3D Universe View
+                    </button>
+                    <button class="btn btn-outline" onclick="navigateToResume('showcase')">
+                        Download CV / Resume
+                    </button>
+                </div>
+            </section>
+
+            <!-- Technical Skills Section -->
+            <section id="skills" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Technical Competencies</span>
+                    <h2 class="section-title">Skills & Technologies</h2>
+                </div>
+                <div id="showcaseSkillsGrid" class="skills-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- Work Experience Section -->
+            <section id="experience" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Professional Background</span>
+                    <h2 class="section-title">Work Experience</h2>
+                </div>
+                <div id="showcaseExperience" class="experience-list">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- Featured Projects Section -->
+            <section id="projects" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Portfolio Showcase</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <div id="showcaseProjectsGrid" class="projects-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- Education & Academic Coursework -->
+            <section id="education" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Academic Credentials</span>
+                    <h2 class="section-title">Education & Relevant Coursework</h2>
+                </div>
+                <div class="education-layout">
+                    <div id="showcaseEducation" class="education-cards">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
+                    <div class="glass-card coursework-card">
+                        <h3>Core Coursework</h3>
+                        <div id="showcaseCoursework" class="coursework-pills">
+                            <!-- Populated dynamically via app.js -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leadership Section -->
+            <section id="leadership" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Extracurricular & Impact</span>
+                    <h2 class="section-title">Leadership & Collaboration</h2>
+                </div>
+                <div class="glass-card leadership-card">
+                    <ul id="showcaseLeadership" class="leadership-list">
+                        <!-- Populated dynamically via app.js -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Direct Contact Section -->
+            <section id="contact" class="showcase-section contact-section">
+                <div class="glass-card contact-card">
+                    <h2>Let's Connect & Build Together</h2>
+                    <p>I am actively seeking roles in Forward Deployed Engineering, Software Engineering, and AI Platforms.</p>
+                    <div class="contact-actions">
+                        <a href="mailto:nikhil3nika@gmail.com" class="btn btn-primary-glow">Send Email</a>
+                        <a href="tel:+917518987201" class="btn btn-secondary-glass">Call +91-7518987201</a>
+                        <a href="https://github.com/nikpomp" target="_blank" rel="noopener" class="btn btn-outline">GitHub Profile</a>
+                        <a href="https://linkedin.com/in/unk17" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="showcase-footer">
+                <p>© 2026 Nikhil Yadav. Built with Vanilla JS & Three.js.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- MAIN SCREEN 2: 3D Landing Page -->
+    <div id="landing" class="screen">
+        <div class="content">
+            <h1 class="title">Nikhil's Universe</h1>
+            <div class="about-section">
+                <h3>3D Interactive Portfolio</h3>
+                <p>This 3D solar system visualizes my software engineering journey. Each planet represents a real milestone, skill category, or project—from full-stack ERP platforms to AI misinformation detectors.</p>
+            </div>
             <div class="landing-buttons">
-                <button id="enterBtn" class="enter-btn">My Universe</button>
-                <div style="margin-top: 15px;"></div>
-                <button id="resumeBtnLanding" class="enter-btn resume-btn-style"
-                    onclick="navigateToResume('landing')">View Resume</button>
+                <button id="enterBtn" class="enter-btn">Explore Solar System</button>
+                <button class="enter-btn resume-btn-style" onclick="showScreen('showcase')">Back to Modern View</button>
             </div>
         </div>
     </div>
 
-    <!-- Milky Way View -->
+    <!-- MAIN SCREEN 3: Milky Way View -->
     <div id="milkyway" class="screen">
         <canvas id="galaxyCanvas"></canvas>
         <div class="overlay">
-            <h2>The Future Horizon</h2>
-            <p>These distant solar systems represent my goals and future aspirations</p>
+            <h2>Career Goals & Horizon</h2>
+            <p>Future aspirations and core engineering focus areas</p>
             <div id="goalsContainer"></div>
-            <button id="enterSolarBtn" class="enter-btn" style="display:none;">Explore My Journey</button>
+            <button id="enterSolarBtn" class="enter-btn" style="display:none;">Enter Solar System</button>
         </div>
-        <button id="backToLandingBtn" class="back-btn">Back to Universe</button>
+        <button id="backToLandingBtn" class="back-btn" onclick="showScreen('showcase')">Back to Modern View</button>
     </div>
 
-    <!-- Solar System View (Removed as requested) -->
-
-
-    <!-- Detailed Solar System -->
+    <!-- MAIN SCREEN 4: Detailed Interactive 3D Solar System -->
     <div id="detailed" class="screen">
         <canvas id="detailedCanvas"></canvas>
         <div id="detailed-header">
-            <h1>My Skills & Achievements</h1>
-            <p>Click on planets to explore my journey.</p>
+            <h1>Skills, Projects & Milestones</h1>
+            <p>Click on planets to inspect Nikhil's projects & technical background.</p>
         </div>
-        <button id="menuBtn">View All Content</button>
+        <button id="menuBtn">View Content List</button>
+        <button id="resumeBtnDetailed" class="resume-btn-detailed" onclick="event.stopPropagation(); navigateToResume('detailed')">View Resume</button>
+
         <div id="contentSidebar">
-            <button id="closeSidebar">×</button>
+            <button id="closeSidebar">&times;</button>
             <div id="sidebarContent"></div>
         </div>
+
         <div class="planet-info" id="planetInfo">
             <div class="info-content">
                 <span class="close-btn" id="closeInfo">&times;</span>
@@ -66,23 +234,79 @@
                 <div id="skills"></div>
             </div>
         </div>
-        <button id="backBtn" class="back-btn">Back</button>
-        <button id="resumeBtnDetailed" class="resume-btn-detailed"
-            onclick="event.stopPropagation(); navigateToResume('detailed')">View Resume</button>
+        <button id="backBtn" class="back-btn">Back to Galaxy</button>
     </div>
 
-    <!-- Resume View -->
+    <!-- MAIN SCREEN 5: Resume Viewer Modal -->
     <div id="resume" class="screen">
         <div class="resume-container">
-            <img src="resume.jpg" alt="My Resume" class="resume-img">
+            <div class="resume-paper">
+                <div class="resume-paper-header">
+                    <h1>Nikhil Yadav</h1>
+                    <p>Software Engineer | Full-Stack Development, Data Systems & AI Applications</p>
+                    <p>Lucknow, Uttar Pradesh, India • +91-7518987201 • nikhil3nika@gmail.com</p>
+                    <p>github.com/nikpomp • linkedin.com/in/unk17</p>
+                </div>
+                <div class="resume-paper-body">
+                    <section class="resume-sec">
+                        <h3>Professional Summary</h3>
+                        <p>Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and modern ML frameworks. Strong problem-solving ability with experience translating real-world requirements into scalable technical solutions. Interested in Forward Deployed Engineering, Software Engineering, and AI Platform roles.</p>
+                    </section>
+                    <section class="resume-sec">
+                        <h3>Education</h3>
+                        <p><strong>B. Tech in Computer Science</strong> — Shri Ramswaroop Memorial University, Lucknow, India (Sep 2022 - July 2026)</p>
+                        <p><strong>Secondary & Higher Secondary Education (CBSE)</strong> — Lucknow Public School, Lucknow, India</p>
+                    </section>
+                    <section class="resume-sec">
+                        <h3>Technical Skills</h3>
+                        <p><strong>Programming:</strong> Python, JavaScript, C++, SQL</p>
+                        <p><strong>Backend & APIs:</strong> REST APIs, Database Design, Data Modeling, CRUD Workflows</p>
+                        <p><strong>Databases:</strong> MySQL, SQL Query Optimization</p>
+                        <p><strong>AI & Data:</strong> Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, NLP, TF-IDF</p>
+                        <p><strong>Tools:</strong> Git, GitHub, VS Code</p>
+                    </section>
+                    <section class="resume-sec">
+                        <h3>Work Experience</h3>
+                        <p><strong>Software Development Intern</strong> — Hubble Mind (Jun 2023 - Aug 2023)</p>
+                        <ul>
+                            <li>Designed and maintained structured MySQL databases for client project records, improving data organization and query reliability.</li>
+                            <li>Collaborated with engineering teams to improve backend data workflows and reporting performance for internal tools.</li>
+                        </ul>
+                    </section>
+                    <section class="resume-sec">
+                        <h3>Projects</h3>
+                        <p><strong>ERP System Development</strong> (Full-Stack Application)</p>
+                        <ul>
+                            <li>Designed and developed a centralized ERP platform supporting inventory, employee management, and billing workflows.</li>
+                            <li>Built relational MySQL schema supporting 50+ inventory and employee operations with business-critical CRUD flows.</li>
+                            <li>Developed responsive interfaces using HTML, CSS, and JavaScript for cross-module usability.</li>
+                        </ul>
+                        <p><strong>AI-Based Misinformation Detection Platform</strong> (NLP / Machine Learning / Chatbot)</p>
+                        <ul>
+                            <li>Built an NLP-powered verification system to analyze text content and identify potentially misleading information.</li>
+                            <li>Implemented preprocessing pipelines with tokenization, cleaning, and TF-IDF vectorization.</li>
+                            <li>Designed a real-time plugin workflow for automated verification and user feedback integration.</li>
+                            <li>Built an interactive AI verification chatbot that accepts user-submitted text, returns credibility scores, and explains classification results in natural language.</li>
+                        </ul>
+                        <p><strong>Product Recommendation Engine</strong> (Machine Learning)</p>
+                        <ul>
+                            <li>Developed a recommendation service using content-based filtering and cosine similarity.</li>
+                            <li>Processed product metadata with Pandas and Scikit-learn to generate personalized recommendations.</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
             <div class="resume-controls">
-                <button id="backFromResumeBtn" class="resume-back-btn" onclick="closeResume()">Close</button>
-                <a href="resume.jpg" download="Nikhil_Yadav_Resume.jpg" class="download-btn">Download</a>
+                <button id="backFromResumeBtn" class="resume-back-btn" onclick="closeResume()">Close Resume</button>
+                <button class="download-btn" onclick="window.print()">Print / Download PDF</button>
             </div>
         </div>
     </div>
 
+    <!-- Three.js CDN Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Application Script -->
     <script src="app.js"></script>
 </body>
 
