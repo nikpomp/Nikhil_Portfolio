@@ -10,8 +10,10 @@ const data = {
         email: "nikhil3nika@gmail.com",
         github: "https://github.com/nikpomp",
         githubUsername: "@nikpomp",
-        linkedin: "https://linkedin.com/in/unk17",
-        linkedinUsername: "in/unk17",
+        linkedin: "https://www.linkedin.com/in/nik0096/",
+        linkedinUsername: "in/nik0096",
+        leetcode: "https://leetcode.com/u/UNK17/",
+        leetcodeUsername: "u/UNK17",
         summary: "Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and modern ML frameworks. Strong problem-solving ability with experience translating real-world requirements into scalable technical solutions. Interested in Forward Deployed Engineering, Software Engineering, and AI Platform roles."
     },
     goals: [
