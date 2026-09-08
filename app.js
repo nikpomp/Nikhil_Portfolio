@@ -263,20 +263,19 @@ const data = {
 
 // Global State
 let currentScreen = 'showcase';
-let galaxyScene, galaxyCamera, galaxyRenderer;
 let detailedScene, detailedCamera, detailedRenderer;
-let animationId;
 let meteors = [];
 let meteorInterval;
 let audioCtx = null;
 let isAudioPlaying = false;
 let osc1, osc2, gainNode;
+let mousePos = { x: 0, y: 0 };
 
 // Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
     populateShowcaseData();
     initEventListeners();
-    initLandingStars();
+    initConstellationBackground();
     showErpModule('inventory');
     runRecommendation();
 });
@@ -309,11 +308,10 @@ function toggleAudioAmbience() {
         osc2.type = 'triangle';
         osc2.frequency.setValueAtTime(164.81, audioCtx.currentTime); // E3 fifth interval
 
-        // Slow subtle LFO frequency modulation
         osc1.frequency.exponentialRampToValueAtTime(108, audioCtx.currentTime + 4);
         
         gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 2); // Soft volume
+        gainNode.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 2);
 
         osc1.connect(gainNode);
         osc2.connect(gainNode);
@@ -377,7 +375,6 @@ window.runMisinfoAnalysis = function() {
     let matchedPreset = misinfoPresets.find(p => p.text.toLowerCase() === inputVal.toLowerCase());
     
     if (!matchedPreset) {
-        // Dynamic scoring heuristics for custom text
         const isClickbait = /click|free|win|money|secret|urgent|guaranteed/i.test(inputVal);
         const score = isClickbait ? Math.floor(Math.random() * 25) + 10 : Math.floor(Math.random() * 30) + 68;
         const tokens = inputVal.toLowerCase().split(/\s+/).filter(w => w.length > 3).slice(0, 4);
@@ -510,7 +507,6 @@ window.runRecommendation = function() {
 
 // Populate Modern Showcase UI
 function populateShowcaseData() {
-    // 1. Technical Skills Badges
     const skillsGrid = document.getElementById('showcaseSkillsGrid');
     if (skillsGrid) {
         skillsGrid.innerHTML = '';
@@ -530,7 +526,6 @@ function populateShowcaseData() {
         });
     }
 
-    // 2. Experience Timeline
     const expContainer = document.getElementById('showcaseExperience');
     if (expContainer) {
         expContainer.innerHTML = '';
@@ -553,7 +548,6 @@ function populateShowcaseData() {
         });
     }
 
-    // 3. Featured Projects Grid
     const projectsGrid = document.getElementById('showcaseProjectsGrid');
     if (projectsGrid) {
         projectsGrid.innerHTML = '';
@@ -575,7 +569,6 @@ function populateShowcaseData() {
         });
     }
 
-    // 4. Education Cards
     const eduContainer = document.getElementById('showcaseEducation');
     if (eduContainer) {
         eduContainer.innerHTML = '';
@@ -594,13 +587,11 @@ function populateShowcaseData() {
         });
     }
 
-    // 5. Coursework Pills
     const courseworkList = document.getElementById('showcaseCoursework');
     if (courseworkList) {
         courseworkList.innerHTML = data.coursework.map(c => `<span class="course-badge">${c}</span>`).join('');
     }
 
-    // 6. Leadership Bullet Points
     const leadershipList = document.getElementById('showcaseLeadership');
     if (leadershipList) {
         leadershipList.innerHTML = data.leadership.map(l => `<li>${l}</li>`).join('');
@@ -614,10 +605,7 @@ window.showScreen = function(screenId) {
     if (target) target.classList.add('active');
     currentScreen = screenId;
 
-    if (screenId === 'milkyway') {
-        if (!galaxyScene) initGalaxy();
-        animateGalaxy();
-    } else if (screenId === 'detailed') {
+    if (screenId === 'detailed') {
         initDetailedSolarSystem();
     }
 };
@@ -636,30 +624,14 @@ window.closeResume = function () {
 };
 
 function initEventListeners() {
-    const enterBtn = document.getElementById('enterBtn');
-    if (enterBtn) {
-        enterBtn.addEventListener('click', () => {
-            showScreen('milkyway');
-        });
-    }
-
-    const enterSolarBtn = document.getElementById('enterSolarBtn');
-    if (enterSolarBtn) {
-        enterSolarBtn.addEventListener('click', () => {
-            showScreen('detailed');
-        });
-    }
+    window.addEventListener('mousemove', (e) => {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+    });
 
     const backBtn = document.getElementById('backBtn');
     if (backBtn) {
         backBtn.addEventListener('click', () => {
-            showScreen('milkyway');
-        });
-    }
-
-    const backToLandingBtn = document.getElementById('backToLandingBtn');
-    if (backToLandingBtn) {
-        backToLandingBtn.addEventListener('click', () => {
             showScreen('showcase');
         });
     }
@@ -770,15 +742,11 @@ function showPlanetInfo(planet) {
     info.classList.add('active');
 }
 
-// Three.js Background Stars for Landing Screen
-function initLandingStars() {
-    const container = document.querySelector('.stars');
-    if (!container) return;
-    container.innerHTML = '';
-
-    const canvas = document.createElement('canvas');
+// UPGRADED INTERACTIVE CONSTELLATION CANVAS
+function initConstellationBackground() {
+    const canvas = document.getElementById('bgConstellationCanvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    container.appendChild(canvas);
 
     const resize = () => {
         canvas.width = window.innerWidth;
@@ -787,163 +755,73 @@ function initLandingStars() {
     window.addEventListener('resize', resize);
     resize();
 
-    class Star {
+    class Node {
         constructor() {
-            this.x = Math.random() * canvas.width - canvas.width / 2;
-            this.y = Math.random() * canvas.height - canvas.height / 2;
-            this.z = Math.random() * 1000;
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
+            this.radius = Math.random() * 2 + 1;
+            this.alpha = Math.random() * 0.6 + 0.3;
         }
 
         update() {
-            this.z -= 1.5;
-            if (this.z < 1) {
-                this.x = Math.random() * canvas.width - canvas.width / 2;
-                this.y = Math.random() * canvas.height - canvas.height / 2;
-                this.z = 1000;
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+            // Subtle interaction with mouse
+            const dx = mousePos.x - this.x;
+            const dy = mousePos.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+                this.x -= (dx / dist) * 0.5;
+                this.y -= (dy / dist) * 0.5;
             }
         }
 
         draw() {
-            const x = (this.x / this.z) * 100 + canvas.width / 2;
-            const y = (this.y / this.z) * 100 + canvas.height / 2;
-            const s = (1 - this.z / 1000) * 2;
-
             ctx.beginPath();
-            ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
-            ctx.arc(x, y, s > 0 ? s : 0, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 242, 254, ${this.alpha})`;
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fill();
         }
     }
 
-    const stars = Array(350).fill().map(() => new Star());
+    const nodeCount = Math.min(Math.floor(window.innerWidth / 12), 120);
+    const nodes = Array(nodeCount).fill().map(() => new Node());
 
     function animate() {
-        if (currentScreen === 'landing' || currentScreen === 'showcase') {
-            ctx.fillStyle = 'rgba(11, 15, 25, 0.4)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        if (currentScreen === 'showcase') {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
+            // Connect nearby nodes with constellation lines
+            for (let i = 0; i < nodes.length; i++) {
+                nodes[i].update();
+                nodes[i].draw();
+
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        const alpha = (1 - dist / 130) * 0.25;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
         }
         requestAnimationFrame(animate);
     }
     animate();
-}
-
-// Three.js Galaxy Initialization
-function createStarTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.2, 'rgba(0, 242, 254, 0.8)');
-    gradient.addColorStop(0.5, 'rgba(79, 172, 254, 0.3)');
-    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-}
-
-function createMilkyWay() {
-    const particles = 25000;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particles * 3);
-    const colors = new Float32Array(particles * 3);
-
-    const innerColor = new THREE.Color(0x00f2fe);
-    const outerColor = new THREE.Color(0x4facfe);
-
-    for (let i = 0; i < particles; i++) {
-        const i3 = i * 3;
-        const radius = Math.random() * 600;
-        const spinAngle = radius * 0.3;
-        const branchAngle = (i % 4) / 4 * Math.PI * 2;
-
-        const x = Math.cos(branchAngle + spinAngle) * radius;
-        const y = (Math.random() - 0.5) * 40;
-        const z = Math.sin(branchAngle + spinAngle) * radius;
-
-        positions[i3] = x;
-        positions[i3 + 1] = y;
-        positions[i3 + 2] = z;
-
-        const mixedColor = innerColor.clone();
-        mixedColor.lerp(outerColor, radius / 600);
-
-        colors[i3] = mixedColor.r;
-        colors[i3 + 1] = mixedColor.g;
-        colors[i3 + 2] = mixedColor.b;
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const starTexture = createStarTexture();
-    const material = new THREE.PointsMaterial({
-        size: 3.5,
-        map: starTexture,
-        vertexColors: true,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        alphaTest: 0.05
-    });
-
-    return new THREE.Points(geometry, material);
-}
-
-function initGalaxy() {
-    const canvas = document.getElementById('galaxyCanvas');
-    if (!canvas) return;
-
-    galaxyScene = new THREE.Scene();
-    galaxyCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-    galaxyRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    galaxyRenderer.setSize(window.innerWidth, window.innerHeight);
-    galaxyRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const milkyWay = createMilkyWay();
-    galaxyScene.add(milkyWay);
-
-    const container = document.getElementById('goalsContainer');
-    if (container) {
-        container.innerHTML = '';
-        data.goals.forEach((goal) => {
-            const card = document.createElement('div');
-            card.className = 'goal-card';
-            card.innerHTML = `<h3>${goal.name}</h3><p>${goal.desc}</p>`;
-            card.style.borderColor = goal.color;
-            container.appendChild(card);
-        });
-    }
-
-    galaxyCamera.position.set(0, 150, 1000);
-    galaxyCamera.lookAt(0, 0, 0);
-}
-
-function animateGalaxy() {
-    if (currentScreen !== 'milkyway') return;
-
-    animationId = requestAnimationFrame(animateGalaxy);
-    if (galaxyScene) galaxyScene.rotation.y += 0.0005;
-
-    if (galaxyCamera && galaxyCamera.position.z > 300) {
-        galaxyCamera.position.z -= 15;
-        galaxyCamera.lookAt(0, 0, 0);
-    } else {
-        const btn = document.getElementById('enterSolarBtn');
-        if (btn) btn.style.display = 'inline-block';
-    }
-
-    if (galaxyRenderer && galaxyScene && galaxyCamera) {
-        galaxyRenderer.render(galaxyScene, galaxyCamera);
-    }
 }
 
 // 3D Solar System View
@@ -1058,7 +936,6 @@ function animateDetailedSolarSystem() {
     if (currentScreen !== 'detailed' || !detailedRenderer) return;
     requestAnimationFrame(animateDetailedSolarSystem);
 
-    // Animate Meteors
     for (let i = meteors.length - 1; i >= 0; i--) {
         const m = meteors[i];
         m.position.add(m.userData.velocity);
@@ -1069,7 +946,6 @@ function animateDetailedSolarSystem() {
         }
     }
 
-    // Revolving Planets
     detailedScene.children.forEach(group => {
         if (group.userData && group.userData.isSystemGroup) {
             group.children.forEach(child => {

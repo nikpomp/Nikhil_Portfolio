@@ -27,10 +27,11 @@
                 <span class="brand-name">Nikhil Yadav</span>
             </a>
             <nav class="nav-links">
+                <a href="#overview" onclick="showScreen('showcase')">About</a>
                 <a href="#skills" onclick="showScreen('showcase')">Skills</a>
                 <a href="#experience" onclick="showScreen('showcase')">Experience</a>
                 <a href="#projects" onclick="showScreen('showcase')">Projects</a>
-                <a href="#interactive-demos" onclick="showScreen('showcase')">Interactive AI Demos</a>
+                <a href="#interactive-demos" onclick="showScreen('showcase')">AI Demos</a>
                 <a href="#education" onclick="showScreen('showcase')">Education</a>
                 <a href="#contact" onclick="showScreen('showcase')">Contact</a>
             </nav>
@@ -38,7 +39,7 @@
                 <button id="soundToggleBtn" class="btn btn-icon-glass" title="Toggle Cosmic Ambience Sound" onclick="toggleAudioAmbience()">
                     🔊 <span id="soundLabel">Sound Off</span>
                 </button>
-                <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
+                <button class="btn btn-secondary-glass" onclick="showScreen('detailed')">
                     🌌 3D Universe
                 </button>
                 <button class="btn btn-primary-glow" onclick="navigateToResume('showcase')">
@@ -48,61 +49,102 @@
         </div>
     </header>
 
-    <!-- Background Starfield Animation -->
-    <div class="stars"></div>
+    <!-- Background Graphics & Interactive Constellation Canvas -->
+    <div class="bg-graphics-layer">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+        <div class="cyber-grid-overlay"></div>
+    </div>
+    <canvas id="bgConstellationCanvas" class="stars"></canvas>
 
     <!-- MAIN SCREEN 1: Modern Showcase Portfolio (Default View) -->
     <div id="showcase" class="screen active">
         <div class="showcase-container">
             
             <!-- Hero Section -->
-            <section id="overview" class="hero-section">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    CS @ SRMU '26 • Open to Forward Deployed & Software Eng Roles
-                </div>
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Nikhil Yadav</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    Software Engineer | Full-Stack Development, Data Systems & AI Applications
-                </h2>
-                <p class="hero-bio">
-                    Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and ML frameworks.
-                </p>
+            <section id="overview" class="hero-section showcase-section">
+                <div class="hero-layout">
+                    <div class="hero-text-content">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            CS @ SRMU '26 • Open to Forward Deployed & Software Eng Roles
+                        </div>
+                        <h1 class="hero-title">
+                            Hi, I'm <span class="gradient-text">Nikhil Yadav</span>
+                        </h1>
+                        <h2 class="hero-subtitle">
+                            Software Engineer | Full-Stack Development, Data Systems & AI Applications
+                        </h2>
+                        <p class="hero-bio">
+                            Computer Science undergraduate with experience building end-to-end software systems, database-backed applications, and AI-powered solutions. Developed full-stack ERP platforms, recommendation engines, and misinformation detection workflows using Python, JavaScript, SQL, and ML frameworks.
+                        </p>
 
-                <!-- Quick Info Contact Chips -->
-                <div class="hero-contact-chips">
-                    <a href="mailto:nikhil3nika@gmail.com" class="chip">
-                        <span>📧</span> nikhil3nika@gmail.com
-                    </a>
-                    <a href="tel:+917518987201" class="chip">
-                        <span>📞</span> +91-7518987201
-                    </a>
-                    <span class="chip">
-                        <span>📍</span> Lucknow, UP, India
-                    </span>
-                    <a href="https://github.com/nikpomp" target="_blank" rel="noopener" class="chip">
-                        <span>🐙</span> github.com/nikpomp
-                    </a>
-                    <a href="https://www.linkedin.com/in/nik0096/" target="_blank" rel="noopener" class="chip">
-                        <span>💼</span> linkedin.com/in/nik0096
-                    </a>
-                    <a href="https://leetcode.com/u/UNK17/" target="_blank" rel="noopener" class="chip">
-                        <span>⚡</span> leetcode.com/u/UNK17
-                    </a>
-                </div>
+                        <!-- Quick Info Contact Chips -->
+                        <div class="hero-contact-chips">
+                            <a href="mailto:nikhil3nika@gmail.com" class="chip">
+                                <span>📧</span> nikhil3nika@gmail.com
+                            </a>
+                            <a href="tel:+917518987201" class="chip">
+                                <span>📞</span> +91-7518987201
+                            </a>
+                            <span class="chip">
+                                <span>📍</span> Lucknow, UP, India
+                            </span>
+                            <a href="https://github.com/nikpomp" target="_blank" rel="noopener" class="chip">
+                                <span>🐙</span> github.com/nikpomp
+                            </a>
+                            <a href="https://www.linkedin.com/in/nik0096/" target="_blank" rel="noopener" class="chip">
+                                <span>💼</span> linkedin.com/in/nik0096
+                            </a>
+                            <a href="https://leetcode.com/u/UNK17/" target="_blank" rel="noopener" class="chip">
+                                <span>⚡</span> leetcode.com/u/UNK17
+                            </a>
+                        </div>
 
-                <!-- Action Buttons -->
-                <div class="hero-buttons">
-                    <a href="#interactive-demos" class="btn btn-primary-glow">🎮 Try Live AI Demos</a>
-                    <a href="#projects" class="btn btn-secondary-glass">Explore Projects</a>
-                    <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
-                        🌌 Experience 3D Universe View
-                    </button>
-                    <button class="btn btn-outline" onclick="navigateToResume('showcase')">
-                        Download CV / Resume
-                    </button>
+                        <!-- Action Buttons -->
+                        <div class="hero-buttons">
+                            <a href="#interactive-demos" class="btn btn-primary-glow">🎮 Try Live AI Demos</a>
+                            <a href="#projects" class="btn btn-secondary-glass">Explore Projects</a>
+                            <button class="btn btn-secondary-glass" onclick="showScreen('detailed')">
+                                🌌 Experience 3D Universe View
+                            </button>
+                            <button class="btn btn-outline" onclick="navigateToResume('showcase')">
+                                Download CV / Resume
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Unique Hero Visual Graphic Badge -->
+                    <div class="hero-visual-card">
+                        <div class="visual-graphic-container">
+                            <svg class="hero-tech-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="100" r="90" stroke="url(#cyan-grad)" stroke-width="2" stroke-dasharray="8 6" opacity="0.6"/>
+                                <circle cx="100" cy="100" r="70" stroke="url(#purple-grad)" stroke-width="1.5" opacity="0.8"/>
+                                <polygon points="100,30 160,130 40,130" stroke="#00f2fe" stroke-width="2" fill="rgba(0,242,254,0.05)"/>
+                                <circle cx="100" cy="100" r="24" fill="url(#cyan-grad)" opacity="0.9"/>
+                                <text x="100" y="105" text-anchor="middle" fill="#0b0f19" font-family="Outfit" font-weight="800" font-size="14">NY</text>
+                                <defs>
+                                    <linearGradient id="cyan-grad" x1="0" y1="0" x2="200" y2="200">
+                                        <stop offset="0%" stop-color="#00f2fe"/>
+                                        <stop offset="100%" stop-color="#4facfe"/>
+                                    </linearGradient>
+                                    <linearGradient id="purple-grad" x1="200" y1="0" x2="0" y2="200">
+                                        <stop offset="0%" stop-color="#7b61ff"/>
+                                        <stop offset="100%" stop-color="#00f2fe"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="hero-stat-pill">
+                                <span class="stat-num">50+</span>
+                                <span class="stat-txt">MySQL CRUD Operations</span>
+                            </div>
+                            <div class="hero-stat-pill pill-2">
+                                <span class="stat-num">NLP</span>
+                                <span class="stat-txt">AI Verification Engine</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -279,34 +321,7 @@
         </div>
     </div>
 
-    <!-- MAIN SCREEN 2: 3D Landing Page -->
-    <div id="landing" class="screen">
-        <div class="content">
-            <h1 class="title">Nikhil's Universe</h1>
-            <div class="about-section">
-                <h3>3D Interactive Portfolio</h3>
-                <p>This 3D solar system visualizes my software engineering journey. Each planet represents a real milestone, skill category, or project—from full-stack ERP platforms to AI misinformation detectors.</p>
-            </div>
-            <div class="landing-buttons">
-                <button id="enterBtn" class="enter-btn">Explore Solar System</button>
-                <button class="enter-btn resume-btn-style" onclick="showScreen('showcase')">Back to Modern View</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN SCREEN 3: Milky Way View -->
-    <div id="milkyway" class="screen">
-        <canvas id="galaxyCanvas"></canvas>
-        <div class="overlay">
-            <h2>Career Goals & Horizon</h2>
-            <p>Future aspirations and core engineering focus areas</p>
-            <div id="goalsContainer"></div>
-            <button id="enterSolarBtn" class="enter-btn" style="display:none;">Enter Solar System</button>
-        </div>
-        <button id="backToLandingBtn" class="back-btn" onclick="showScreen('showcase')">Back to Modern View</button>
-    </div>
-
-    <!-- MAIN SCREEN 4: Detailed Interactive 3D Solar System -->
+    <!-- MAIN SCREEN 2: Detailed Interactive 3D Solar System -->
     <div id="detailed" class="screen">
         <canvas id="detailedCanvas"></canvas>
         <div id="detailed-header">
@@ -329,10 +344,10 @@
                 <div id="skills"></div>
             </div>
         </div>
-        <button id="backBtn" class="back-btn">Back to Galaxy</button>
+        <button id="backBtn" class="back-btn" onclick="showScreen('showcase')">Back to Showcase View</button>
     </div>
 
-    <!-- MAIN SCREEN 5: Resume Viewer Modal -->
+    <!-- MAIN SCREEN 3: Resume Viewer Modal -->
     <div id="resume" class="screen">
         <div class="resume-container">
             <div class="resume-paper">
