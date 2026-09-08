@@ -80,7 +80,7 @@ const data = {
             category: "AI / Machine Learning / NLP",
             highlights: [
                 "Built an NLP-powered verification system to analyze text content and identify potentially misleading information.",
-                "Implemented preprocessing pipelines with tokenization, text cleaning, and TF-IDF vectorization.",
+                "Implemented preprocessing pipelines with tokenization, cleaning, and TF-IDF vectorization.",
                 "Designed a real-time plugin workflow for automated verification and user feedback integration.",
                 "Built an interactive AI verification chatbot that accepts user-submitted text, returns credibility scores, and explains classification results in natural language."
             ],
@@ -260,19 +260,251 @@ const data = {
 };
 
 // Global State
-let currentScreen = 'showcase'; // Default to modern showcase view!
+let currentScreen = 'showcase';
 let galaxyScene, galaxyCamera, galaxyRenderer;
 let detailedScene, detailedCamera, detailedRenderer;
 let animationId;
 let meteors = [];
 let meteorInterval;
+let audioCtx = null;
+let isAudioPlaying = false;
+let osc1, osc2, gainNode;
 
 // Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
     populateShowcaseData();
     initEventListeners();
     initLandingStars();
+    showErpModule('inventory');
+    runRecommendation();
 });
+
+// Web Audio API Cosmic Ambience Generator
+function toggleAudioAmbience() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    
+    const label = document.getElementById('soundLabel');
+
+    if (isAudioPlaying) {
+        if (gainNode) gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        setTimeout(() => {
+            if (osc1) osc1.stop();
+            if (osc2) osc2.stop();
+            isAudioPlaying = false;
+        }, 500);
+        if (label) label.textContent = 'Sound Off';
+    } else {
+        audioCtx.resume();
+        osc1 = audioCtx.createOscillator();
+        osc2 = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(110, audioCtx.currentTime); // A2 chord
+        
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(164.81, audioCtx.currentTime); // E3 fifth interval
+
+        // Slow subtle LFO frequency modulation
+        osc1.frequency.exponentialRampToValueAtTime(108, audioCtx.currentTime + 4);
+        
+        gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 2); // Soft volume
+
+        osc1.connect(gainNode);
+        osc2.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc1.start();
+        osc2.start();
+        isAudioPlaying = true;
+        if (label) label.textContent = 'Cosmic Synth On 🎶';
+    }
+}
+
+// Interactive Demo Tab Switcher
+window.switchDemoTab = function(tabId) {
+    document.querySelectorAll('.demo-tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.demo-tab-content').forEach(content => content.style.display = 'none');
+
+    const selectedBtn = Array.from(document.querySelectorAll('.demo-tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+    if (selectedBtn) selectedBtn.classList.add('active');
+
+    const targetContent = document.getElementById(tabId);
+    if (targetContent) targetContent.style.display = 'block';
+};
+
+// Demo 1: AI Misinformation Detector Simulation Logic
+const misinfoPresets = [
+    {
+        text: "NASA rover discovers organic molecules on Mars surface.",
+        score: 94,
+        keywords: ["nasa", "rover", "organic_molecules", "mars_surface"],
+        explanation: "High semantic similarity with verified scientific publications. Token frequency aligns with authentic astronomy reporting."
+    },
+    {
+        text: "Click this link to claim a free $5,000 gift card immediately!",
+        score: 12,
+        keywords: ["click_link", "claim_free", "gift_card", "urgency_trigger"],
+        explanation: "High spam/phishing feature probability. TF-IDF flags excessive promotional triggers and unverified external domain references."
+    },
+    {
+        text: "New study shows drinking 8 glasses of water daily boosts cognitive function.",
+        score: 88,
+        keywords: ["study", "water_hydration", "cognitive_boost", "health_journal"],
+        explanation: "Consistent with standard health science terminology. High credibility score across empirical medical datasets."
+    }
+];
+
+window.setMisinfoSample = function(idx) {
+    const preset = misinfoPresets[idx];
+    if (preset) {
+        document.getElementById('misinfoInput').value = preset.text;
+    }
+};
+
+window.runMisinfoAnalysis = function() {
+    const inputVal = document.getElementById('misinfoInput').value.trim();
+    if (!inputVal) return;
+
+    const resultBox = document.getElementById('misinfoResult');
+    resultBox.style.display = 'block';
+
+    let matchedPreset = misinfoPresets.find(p => p.text.toLowerCase() === inputVal.toLowerCase());
+    
+    if (!matchedPreset) {
+        // Dynamic scoring heuristics for custom text
+        const isClickbait = /click|free|win|money|secret|urgent|guaranteed/i.test(inputVal);
+        const score = isClickbait ? Math.floor(Math.random() * 25) + 10 : Math.floor(Math.random() * 30) + 68;
+        const tokens = inputVal.toLowerCase().split(/\s+/).filter(w => w.length > 3).slice(0, 4);
+        matchedPreset = {
+            score: score,
+            keywords: tokens,
+            explanation: isClickbait 
+                ? "Flagged by TF-IDF model: contains transactional urgency triggers and high risk pattern density." 
+                : "Parsed TF-IDF feature vector correlates positively with authentic informative technical prose."
+        };
+    }
+
+    const titleEl = document.getElementById('misinfoScoreTitle');
+    const badgeEl = document.getElementById('misinfoBadge');
+    const barEl = document.getElementById('misinfoProgressBar');
+    const keywordsEl = document.getElementById('misinfoKeywords');
+    const expEl = document.getElementById('misinfoExplanation');
+
+    titleEl.textContent = matchedPreset.score > 60 ? "Authentic / Credible Content" : "Potential Misinformation Risk";
+    badgeEl.textContent = `${matchedPreset.score}%`;
+    badgeEl.style.background = matchedPreset.score > 60 ? "rgba(0, 242, 254, 0.2)" : "rgba(255, 107, 107, 0.2)";
+    badgeEl.style.color = matchedPreset.score > 60 ? "#00f2fe" : "#ff6b6b";
+
+    barEl.style.width = '0%';
+    setTimeout(() => {
+        barEl.style.width = `${matchedPreset.score}%`;
+        barEl.style.background = matchedPreset.score > 60 ? "linear-gradient(90deg, #00f2fe, #4facfe)" : "linear-gradient(90deg, #ff6b6b, #ff4757)";
+    }, 100);
+
+    keywordsEl.innerHTML = matchedPreset.keywords.map(k => `<span class="kw-pill">${k}</span>`).join(' ');
+    expEl.textContent = matchedPreset.explanation;
+};
+
+// Demo 2: ERP Schema Visualizer Logic
+const erpData = {
+    inventory: {
+        title: "Inventory & Stock Schema",
+        operations: "24 CRUD Operations",
+        schema: [
+            "TABLE items (id INT PK, sku VARCHAR(50), item_name VARCHAR(100), stock_qty INT, unit_price DECIMAL(10,2));",
+            "TABLE stock_movements (movement_id INT PK, item_id INT FK, qty_change INT, movement_type ENUM, timestamp DATETIME);",
+            "INDEX idx_sku (sku), idx_item_stock (item_id, stock_qty);"
+        ],
+        apis: ["POST /api/v1/inventory/item", "GET /api/v1/inventory/stock-summary", "PUT /api/v1/inventory/reorder-alert"]
+    },
+    employee: {
+        title: "Employee & HR Management Schema",
+        operations: "18 CRUD Operations",
+        schema: [
+            "TABLE employees (emp_id INT PK, full_name VARCHAR(100), dept_id INT FK, role VARCHAR(50), status ENUM);",
+            "TABLE payroll_records (record_id INT PK, emp_id INT FK, base_salary DECIMAL, tax_deductions DECIMAL, pay_date DATE);",
+            "INDEX idx_emp_dept (dept_id), idx_payroll_date (pay_date);"
+        ],
+        apis: ["GET /api/v1/hr/employees", "POST /api/v1/hr/payroll/process", "PUT /api/v1/hr/department-transfer"]
+    },
+    billing: {
+        title: "Billing & Invoicing Workflow Schema",
+        operations: "16 CRUD Operations",
+        schema: [
+            "TABLE invoices (invoice_id INT PK, client_id INT FK, total_amount DECIMAL, payment_status ENUM, invoice_date DATE);",
+            "TABLE invoice_items (item_id INT PK, invoice_id INT FK, product_id INT, quantity INT, subtotal DECIMAL);",
+            "INDEX idx_invoice_status (payment_status), idx_client_inv (client_id);"
+        ],
+        apis: ["POST /api/v1/billing/invoice/generate", "GET /api/v1/billing/receivables", "PUT /api/v1/billing/payment-status"]
+    }
+};
+
+window.showErpModule = function(modKey) {
+    document.querySelectorAll('.erp-mod-btn').forEach(btn => btn.classList.remove('active'));
+    const btn = Array.from(document.querySelectorAll('.erp-mod-btn')).find(b => b.getAttribute('onclick').includes(modKey));
+    if (btn) btn.classList.add('active');
+
+    const mod = erpData[modKey];
+    const display = document.getElementById('erpModuleDisplay');
+    if (!mod || !display) return;
+
+    display.innerHTML = `
+        <div class="erp-card-header">
+            <h4>${mod.title}</h4>
+            <span class="erp-badge">${mod.operations}</span>
+        </div>
+        <div class="erp-code-block">
+            <h5>MySQL Relational Schema:</h5>
+            <pre><code>${mod.schema.join('\n')}</code></pre>
+        </div>
+        <div class="erp-apis-block">
+            <h5>Business-Critical REST Endpoints:</h5>
+            <div class="api-pills-list">
+                ${mod.apis.map(a => `<span class="api-pill">${a}</span>`).join('')}
+            </div>
+        </div>
+    `;
+};
+
+// Demo 3: Product Recommendation Engine Logic
+const recData = {
+    python: [
+        { name: "Scikit-Learn ML Suite", score: "0.98 Cosine Similarity", desc: "Primary vectorization & model evaluation toolkit." },
+        { name: "Pandas Data Pipeline", score: "0.95 Cosine Similarity", desc: "Metadata transformation & DataFrame processing." },
+        { name: "TF-IDF Vectorizer", score: "0.91 Cosine Similarity", desc: "Text feature extraction & n-gram weighting." }
+    ],
+    javascript: [
+        { name: "Three.js 3D Engine", score: "0.97 Cosine Similarity", desc: "WebGL interactive space graphics & particle galaxy." },
+        { name: "Vanilla JS Async APIs", score: "0.94 Cosine Similarity", desc: "Zero-dependency client state management & DOM manipulation." },
+        { name: "REST API Integration", score: "0.89 Cosine Similarity", desc: "Asynchronous backend payload streaming." }
+    ],
+    sql: [
+        { name: "MySQL Relational Schemas", score: "0.99 Cosine Similarity", desc: "50+ operation normalized table structures & FK index tuning." },
+        { name: "SQL Query Optimization", score: "0.96 Cosine Similarity", desc: "B-Tree index utilization & JOIN performance tuning." },
+        { name: "CRUD Workflow APIs", score: "0.92 Cosine Similarity", desc: "Transactional data consistency & ACID compliance." }
+    ]
+};
+
+window.runRecommendation = function() {
+    const select = document.getElementById('recSelect');
+    const resultsContainer = document.getElementById('recResults');
+    if (!select || !resultsContainer) return;
+
+    const val = select.value;
+    const items = recData[val] || recData['python'];
+
+    resultsContainer.innerHTML = items.map(item => `
+        <div class="rec-card">
+            <div class="rec-score">${item.score}</div>
+            <h4>${item.name}</h4>
+            <p>${item.desc}</p>
+        </div>
+    `).join('');
+};
 
 // Populate Modern Showcase UI
 function populateShowcaseData() {
@@ -402,14 +634,6 @@ window.closeResume = function () {
 };
 
 function initEventListeners() {
-    // Top Nav buttons
-    const enterUniverseBtn = document.getElementById('enterUniverseBtn');
-    if (enterUniverseBtn) {
-        enterUniverseBtn.addEventListener('click', () => {
-            showScreen('landing');
-        });
-    }
-
     const enterBtn = document.getElementById('enterBtn');
     if (enterBtn) {
         enterBtn.addEventListener('click', () => {

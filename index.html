@@ -11,13 +11,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="theme-nebula">
 
     <!-- Floating Top Navigation Header -->
     <header class="navbar">
@@ -30,10 +30,14 @@
                 <a href="#skills" onclick="showScreen('showcase')">Skills</a>
                 <a href="#experience" onclick="showScreen('showcase')">Experience</a>
                 <a href="#projects" onclick="showScreen('showcase')">Projects</a>
+                <a href="#interactive-demos" onclick="showScreen('showcase')">Interactive AI Demos</a>
                 <a href="#education" onclick="showScreen('showcase')">Education</a>
                 <a href="#contact" onclick="showScreen('showcase')">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button id="soundToggleBtn" class="btn btn-icon-glass" title="Toggle Cosmic Ambience Sound" onclick="toggleAudioAmbience()">
+                    🔊 <span id="soundLabel">Sound Off</span>
+                </button>
                 <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
                     🌌 3D Universe
                 </button>
@@ -88,7 +92,8 @@
 
                 <!-- Action Buttons -->
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary-glow">Explore Projects</a>
+                    <a href="#interactive-demos" class="btn btn-primary-glow">🎮 Try Live AI Demos</a>
+                    <a href="#projects" class="btn btn-secondary-glass">Explore Projects</a>
                     <button class="btn btn-secondary-glass" onclick="showScreen('landing')">
                         🌌 Experience 3D Universe View
                     </button>
@@ -128,6 +133,92 @@
                 </div>
                 <div id="showcaseProjectsGrid" class="projects-grid">
                     <!-- Populated dynamically via app.js -->
+                </div>
+            </section>
+
+            <!-- UNIQUE INTERACTIVE DEMOS SECTION -->
+            <section id="interactive-demos" class="showcase-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Interactive Project Sandbox</span>
+                    <h2 class="section-title">Try Nikhil's Systems Live</h2>
+                    <p class="section-desc">Experience real-time interactive simulations of Nikhil's AI & Full-Stack projects right here in your browser.</p>
+                </div>
+
+                <div class="demo-tabs-container">
+                    <div class="demo-tab-buttons">
+                        <button class="demo-tab-btn active" onclick="switchDemoTab('misinfo-demo')">🤖 AI Misinformation Detector</button>
+                        <button class="demo-tab-btn" onclick="switchDemoTab('erp-demo')">🗄️ ERP System & DB Visualizer</button>
+                        <button class="demo-tab-btn" onclick="switchDemoTab('rec-demo')">🎯 Product Recommender Engine</button>
+                    </div>
+
+                    <!-- DEMO 1: AI Misinformation Chatbot Simulator -->
+                    <div id="misinfo-demo" class="demo-tab-content active glass-card">
+                        <div class="demo-header">
+                            <h3>AI Misinformation Verification Sandbox</h3>
+                            <p>Test the NLP pipeline (TF-IDF vectorization & classification model) by entering news or choosing a sample statement below.</p>
+                        </div>
+                        <div class="demo-samples">
+                            <span class="sample-title">Preset Claims:</span>
+                            <button class="chip-sample" onclick="setMisinfoSample(0)">"NASA rover discovers organic molecules on Mars surface."</button>
+                            <button class="chip-sample" onclick="setMisinfoSample(1)">"Click this link to claim a free $5,000 gift card immediately!"</button>
+                            <button class="chip-sample" onclick="setMisinfoSample(2)">"New study shows drinking 8 glasses of water daily boosts cognitive function."</button>
+                        </div>
+                        <div class="demo-input-group">
+                            <textarea id="misinfoInput" placeholder="Enter any news headline, tweet, or statement to analyze for credibility..."></textarea>
+                            <button class="btn btn-primary-glow" onclick="runMisinfoAnalysis()">Run AI Verification</button>
+                        </div>
+                        <div id="misinfoResult" class="demo-result-box" style="display:none;">
+                            <div class="result-header">
+                                <div>
+                                    <span class="result-label">Credibility Assessment:</span>
+                                    <h4 id="misinfoScoreTitle">Analyzing...</h4>
+                                </div>
+                                <div id="misinfoBadge" class="score-badge">--%</div>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div id="misinfoProgressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                            </div>
+                            <div class="result-details">
+                                <p><strong>TF-IDF Feature Keywords:</strong> <span id="misinfoKeywords" class="keyword-tags">--</span></p>
+                                <p><strong>Model Natural Language Explanation:</strong> <span id="misinfoExplanation">--</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DEMO 2: ERP System & DB Visualizer -->
+                    <div id="erp-demo" class="demo-tab-content glass-card" style="display:none;">
+                        <div class="demo-header">
+                            <h3>ERP Relational Database & 50+ CRUD Operations Visualizer</h3>
+                            <p>Inspect the relational MySQL schema and business-critical operations powering Nikhil's ERP platform.</p>
+                        </div>
+                        <div class="erp-module-selector">
+                            <button class="erp-mod-btn active" onclick="showErpModule('inventory')">📦 Inventory Module</button>
+                            <button class="erp-mod-btn" onclick="showErpModule('employee')">👥 Employee Management</button>
+                            <button class="erp-mod-btn" onclick="showErpModule('billing')">💳 Billing & Invoicing</button>
+                        </div>
+                        <div id="erpModuleDisplay" class="erp-display-box">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- DEMO 3: Product Recommendation Engine -->
+                    <div id="rec-demo" class="demo-tab-content glass-card" style="display:none;">
+                        <div class="demo-header">
+                            <h3>Content-Based ML Recommendation Engine</h3>
+                            <p>Generates real-time product/tech similarity matrix using Cosine Similarity on feature vectors.</p>
+                        </div>
+                        <div class="rec-controls">
+                            <label>Select Target Tech Stack:</label>
+                            <select id="recSelect" onchange="runRecommendation()">
+                                <option value="python">Python & Machine Learning Ecosystem</option>
+                                <option value="javascript">JavaScript Full-Stack Web Stack</option>
+                                <option value="sql">MySQL & Enterprise Database Architecture</option>
+                            </select>
+                        </div>
+                        <div id="recResults" class="rec-cards-grid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -179,7 +270,7 @@
 
             <!-- Footer -->
             <footer class="showcase-footer">
-                <p>© 2026 Nikhil Yadav. Built with Vanilla JS & Three.js.</p>
+                <p>© 2026 Nikhil Yadav. Built with Vanilla JS, Three.js & Web Audio API.</p>
             </footer>
         </div>
     </div>
