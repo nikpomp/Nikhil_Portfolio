@@ -742,7 +742,7 @@ function showPlanetInfo(planet) {
     info.classList.add('active');
 }
 
-// UPGRADED INTERACTIVE CONSTELLATION CANVAS
+// UPGRADED DYNAMIC INTERACTIVE CONSTELLATION & MATRIX CANVAS
 function initConstellationBackground() {
     const canvas = document.getElementById('bgConstellationCanvas');
     if (!canvas) return;
@@ -759,47 +759,61 @@ function initConstellationBackground() {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.8;
-            this.vy = (Math.random() - 0.5) * 0.8;
-            this.radius = Math.random() * 2 + 1;
-            this.alpha = Math.random() * 0.6 + 0.3;
+            this.vx = (Math.random() - 0.5) * 0.7;
+            this.vy = (Math.random() - 0.5) * 0.7;
+            this.radius = Math.random() * 2.2 + 0.8;
+            this.baseAlpha = Math.random() * 0.6 + 0.25;
+            this.alpha = this.baseAlpha;
+            this.hue = Math.random() > 0.5 ? '0, 242, 254' : '123, 97, 255';
         }
 
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
+        update(time) {
+            this.x += this.vx + Math.sin(time * 0.001 + this.y * 0.01) * 0.2;
+            this.y += this.vy + Math.cos(time * 0.001 + this.x * 0.01) * 0.2;
 
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
 
-            // Subtle interaction with mouse
             const dx = mousePos.x - this.x;
             const dy = mousePos.y - this.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 120) {
-                this.x -= (dx / dist) * 0.5;
-                this.y -= (dy / dist) * 0.5;
+            if (dist < 150) {
+                this.alpha = Math.min(1, this.baseAlpha + (1 - dist / 150) * 0.5);
+            } else {
+                this.alpha = this.baseAlpha;
             }
         }
 
         draw() {
             ctx.beginPath();
-            ctx.fillStyle = `rgba(0, 242, 254, ${this.alpha})`;
+            ctx.fillStyle = `rgba(${this.hue}, ${this.alpha})`;
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fill();
         }
     }
 
-    const nodeCount = Math.min(Math.floor(window.innerWidth / 12), 120);
+    const nodeCount = Math.min(Math.floor(window.innerWidth / 10), 140);
     const nodes = Array(nodeCount).fill().map(() => new Node());
 
-    function animate() {
+    function animate(time) {
         if (currentScreen === 'showcase') {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // Draw Mouse Cursor Aura Glow
+            if (mousePos.x > 0 && mousePos.y > 0) {
+                const auraGrad = ctx.createRadialGradient(mousePos.x, mousePos.y, 0, mousePos.x, mousePos.y, 220);
+                auraGrad.addColorStop(0, 'rgba(0, 242, 254, 0.08)');
+                auraGrad.addColorStop(0.5, 'rgba(123, 97, 255, 0.04)');
+                auraGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = auraGrad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
             // Connect nearby nodes with constellation lines
             for (let i = 0; i < nodes.length; i++) {
-                nodes[i].update();
+                nodes[i].update(time);
                 nodes[i].draw();
 
                 for (let j = i + 1; j < nodes.length; j++) {
@@ -807,8 +821,8 @@ function initConstellationBackground() {
                     const dy = nodes[i].y - nodes[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 130) {
-                        const alpha = (1 - dist / 130) * 0.25;
+                    if (dist < 140) {
+                        const alpha = (1 - dist / 140) * 0.22;
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
                         ctx.lineWidth = 0.8;
@@ -821,7 +835,7 @@ function initConstellationBackground() {
         }
         requestAnimationFrame(animate);
     }
-    animate();
+    requestAnimationFrame(animate);
 }
 
 // 3D Solar System View

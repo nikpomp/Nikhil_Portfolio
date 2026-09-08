@@ -338,16 +338,8 @@ body {
 }
 
 .hero-layout {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-@media (max-width: 900px) {
-    .hero-layout {
-        grid-template-columns: 1fr;
-    }
+    display: block;
+    max-width: 920px;
 }
 
 .hero-badge {
