@@ -1316,7 +1316,7 @@ canvas {
     font-weight: 600;
 }
 
-/* Detailed Header UI */
+/* Detailed Header UI & Top Controls Bar */
 #detailed-header {
     position: absolute;
     top: 20px;
@@ -1326,41 +1326,53 @@ canvas {
     color: white;
     z-index: 100;
     pointer-events: none;
-    width: 80%;
+    max-width: 90%;
 }
 
 #detailed-header h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-family: var(--font-heading);
-    color: var(--accent-gold);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-#menuBtn {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    padding: 10px 20px;
-    background: rgba(18, 26, 43, 0.8);
-    border: 1px solid var(--border-glass);
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    z-index: 101;
+.detailed-subtitle {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 26px;
+    font-size: 1.15rem;
     font-weight: 600;
+    color: #ffffff;
+    background: rgba(11, 15, 25, 0.88);
+    border: 1.5px solid var(--accent-cyan);
+    border-radius: 30px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+    pointer-events: auto;
 }
 
-.resume-btn-detailed {
+.detailed-top-actions {
     position: absolute;
-    top: 75px;
-    right: 30px;
-    padding: 8px 18px;
-    background: rgba(0, 242, 254, 0.15);
-    border: 1px solid var(--accent-cyan);
-    color: var(--accent-cyan);
-    border-radius: 20px;
-    cursor: pointer;
+    top: 22px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     z-index: 101;
-    font-weight: 600;
+    white-space: nowrap;
+}
+
+.detailed-top-actions .btn {
+    font-size: 0.98rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
 }
 
 #contentSidebar {
@@ -1559,5 +1571,21 @@ canvas {
     }
     .resume-paper {
         padding: 30px 20px;
+    }
+    .detailed-top-actions {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+    .detailed-top-actions .btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    #detailed-header h1 {
+        font-size: 1.6rem;
+    }
+    .detailed-subtitle {
+        font-size: 0.95rem;
+        padding: 8px 16px;
     }
 }

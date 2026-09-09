@@ -345,10 +345,13 @@
         <canvas id="detailedCanvas"></canvas>
         <div id="detailed-header">
             <h1>Skills, Projects & Milestones</h1>
-            <p>Click on planets to inspect Nikhil's projects & technical background.</p>
+            <p class="detailed-subtitle">Click on planets to inspect Nikhil's projects & technical background.</p>
         </div>
-        <button id="menuBtn">View Content List</button>
-        <button id="resumeBtnDetailed" class="resume-btn-detailed" onclick="event.stopPropagation(); navigateToResume('detailed')">View Resume</button>
+        
+        <div class="detailed-top-actions">
+            <button id="menuBtn" class="btn btn-secondary-glass">📜 Content List</button>
+            <button id="resumeBtnDetailed" class="btn btn-primary-glow" onclick="event.stopPropagation(); navigateToResume('detailed')">📄 View Resume</button>
+        </div>
 
         <div id="contentSidebar">
             <button id="closeSidebar">&times;</button>
