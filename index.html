@@ -42,9 +42,9 @@
                 <button class="btn btn-secondary-glass" onclick="showScreen('detailed')">
                     🌌 3D Universe
                 </button>
-                <button class="btn btn-primary-glow" onclick="navigateToResume('showcase')">
-                    📄 View Resume
-                </button>
+                <a href="Nikhil_Yadav_Resume.pdf" target="_blank" download="Nikhil_Yadav_Resume.pdf" class="btn btn-primary-glow">
+                    📄 Download CV / Resume
+                </a>
             </div>
         </div>
     </header>
@@ -107,10 +107,13 @@
                             <a href="#interactive-demos" class="btn btn-primary-glow">🎮 Try Live AI Demos</a>
                             <a href="#projects" class="btn btn-secondary-glass">Explore Projects</a>
                             <button class="btn btn-secondary-glass" onclick="showScreen('detailed')">
-                                🌌 Experience 3D Universe View
+                                🌌 3D Universe View
                             </button>
+                            <a href="Nikhil_Yadav_Resume.pdf" target="_blank" download="Nikhil_Yadav_Resume.pdf" class="btn btn-primary-glow">
+                                📥 Download Official PDF Resume
+                            </a>
                             <button class="btn btn-outline" onclick="navigateToResume('showcase')">
-                                Download CV / Resume
+                                📄 View Web Resume
                             </button>
                         </div>
                     </div>
@@ -350,7 +353,7 @@
         
         <div class="detailed-top-actions">
             <button id="menuBtn" class="btn btn-secondary-glass">📜 Content List</button>
-            <button id="resumeBtnDetailed" class="btn btn-primary-glow" onclick="event.stopPropagation(); navigateToResume('detailed')">📄 View Resume</button>
+            <a href="Nikhil_Yadav_Resume.pdf" target="_blank" download="Nikhil_Yadav_Resume.pdf" class="btn btn-primary-glow">📄 Download Resume</a>
         </div>
 
         <div id="contentSidebar">
@@ -430,7 +433,8 @@
             </div>
             <div class="resume-controls">
                 <button id="backFromResumeBtn" class="resume-back-btn" onclick="closeResume()">Close Resume</button>
-                <button class="download-btn" onclick="window.print()">Print / Download PDF</button>
+                <a href="Nikhil_Yadav_Resume.pdf" target="_blank" download="Nikhil_Yadav_Resume.pdf" class="download-btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">📥 Download PDF File</a>
+                <button class="download-btn" onclick="window.print()">🖨️ Print Resume</button>
             </div>
         </div>
     </div>
